@@ -1,0 +1,1757 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	    <link id="iconimg" rel="icon" href="http://static.cloob.com/public/images/icon/favicon1.gif">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-language" content="fa">
+<meta name="description" content="هوش‌ مصنوعی با تاكید بر منطق فازی چكیده‌: هدف‌ از این‌ مقاله‌ آشنایی‌ با هوش‌ مص">
+<meta name="keywords" content="هوش‌,مصنوعی,تاكید,منطق,فازی,چكیده‌,هدف‌,این‌,مقاله‌,آشنایی‌,هوش‌,مص,">
+
+
+    
+<title>هوش‌ مصنوعی با تاكید بر منطق فازی</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+    .SearchDiv{
+        position: absolute;
+        min-height: 26px;
+        background-color: #EEE;
+        background-image: url("http://static.cloob.com/public/images/indicator.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+        display: none;
+        z-index: 11000;
+        border: 1px solid #E3E3E3;
+        overflow: hidden;
+        padding: 0px;
+        box-shadow: 0px 4px 3px #999999;
+    }
+
+    .searchDivIn{
+        background-color:#FFF;
+        padding: 0px 0px;
+    }
+    .SearchDiv .userList_row  {
+        background-color: #FFF;
+        margin: 0px;
+        width: 100%;
+        -border-bottom: 1px solid #AAA;
+    }
+
+
+    .SearchDiv .nopic .userList_pic{
+        display: none;
+    }
+    .SearchDiv .nopic .userList_city{
+        display: none;
+    }
+
+    .SearchDiv .simple .userList_city{
+        display: none;
+    }
+    .SearchDiv .nopic .userList_descr {
+        margin: 0px;
+    }
+
+    .SearchDiv .simple .userInfoSize50{
+        width: 35px;
+        height: 35px;
+    }
+
+    .SearchDiv .simple .userList_pic{
+        width: 35px;
+    }
+
+    .SearchDiv .simple .userList_descr {
+        margin-right: 40px;
+    }
+
+    .SearchDiv .userList_descr{
+        text-align: right;
+        direction: rtl;
+    }
+
+    .SearchDiv .userList_fullname{
+        color: #36C;
+        font-weight: bold;
+    }
+
+    .SearchDiv .nopic .userList_fullname{
+        font-weight: normal;
+    }
+
+    .SearchDiv .searchDivIn{
+        border:1px solid #FFF;
+        border-width: 1px 0px;
+        /*color: #FFF;*/
+    }
+    .SearchDiv .searchDivIn .activeRow{
+        border:1px solid #4D90F0;
+        border-width: 1px 0px;
+        background-color: #F5F5F5;
+        /*color: #FFF;*/
+    }
+/*
+    .SearchDiv .searchDivIn .activeRow a{
+        color: #FFF;
+    }
+*/
+</style>
+<script src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+
+
+
+
+    var idleTime =  600 ;
+    var pageLiveTime =  3600*5 ;
+    var notIdleTime =  100 ;
+
+    var cloob_search_activeRowId_arr = new Array();
+
+    cloob_search_ChangeActiveRow = function (el,type){
+        var El;
+        var activeRowId =  (cloob_search_activeRowId_arr[el.id]) ?  cloob_search_activeRowId_arr[el.id] : '' ;
+
+        if(!activeRowId){
+            return ;
+        }
+
+        var rowEl = c_$(activeRowId);
+        var El = (type=='down') ? getNextEl(rowEl) : getPreviousEl(rowEl);
+        if(El && El.id){
+            cloob_search_setHover(el.id,El.id);
+        }
+    }
+
+
+
+    function fill_comment_input(search_box_id,rowEl,refId){
+        var el =  c_$(search_box_id);
+        var el_value = el.value ;
+        var rowRefName = c_$('username_'+refId).innerHTML;
+
+        var indexOfAt = el_value.indexOf('@');
+        if(indexOfAt==0 || el_value[(indexOfAt-1)]==' '){
+            searchVal = el_value.split('@')[1];
+
+            el.value = el.value.replace('@'+searchVal,'[{'+rowRefName+'}]') ;
+        }
+
+        hide_cloob_search(el);
+    }
+
+
+    function call_child_onclick(search_box_id,rowEl,refId){
+
+
+        var rowRefName = c_$('username_'+refId).innerHTML;
+
+//        rowEl.getElementsByTagName('A')[0].click();
+
+        window.location.href = rowEl.getElementsByTagName('A')[0].href;
+    }
+
+    function set_cloob_search(inputId,options){
+
+        var el = c_$(inputId);
+        el.value = '';
+
+        el.parentNode.style.position = 'relative';
+
+        var focusFunc = el.onfocus;
+        var blurFunc = el.onblur;
+        var onkeyupFunc = el.onkeyup;
+
+        el.onkeyup = function(event,el){if(onkeyupFunc){onkeyupFunc()}cloob_search(this,event,options);};
+        el.onfocus = function(el){if(focusFunc){focusFunc()}this.onkeyup();};
+        el.onblur = function(event,el){if(blurFunc){blurFunc()}hide_cloob_search(this);};
+    }
+
+    function cloob_search_setHover(inputId,rowId){
+
+        var activeRowId =  (cloob_search_activeRowId_arr[inputId]) ?  cloob_search_activeRowId_arr[inputId] : '' ;
+
+        if(activeRowId && c_$(activeRowId)){
+            c_$(activeRowId).className = (c_$(activeRowId).className) ? c_$(activeRowId).className.replace(' activeRow','') : '';
+        }
+
+        cloob_search_activeRowId_arr[inputId] = rowId;
+        c_$(rowId).className = (c_$(rowId).className) ? (c_$(rowId).className+' activeRow') : 'activeRow';
+
+    }
+
+    var cloob_search_Timer ;
+    var cloob_search_Arr = new Array() ;
+
+    function hide_cloob_search(el){
+        var searchDivId = 'searchDiv_'+el.id;
+        if(searchDivId && c_$(searchDivId)){
+            cloob_search_Timer = setTimeout(function () {
+             c_$(searchDivId).style.display = 'none';
+            }, 300);
+        }
+    }
+
+
+
+
+    function cloob_search(el,evt,options){
+
+        var key;
+        if(window.event){
+            key = window.event.keyCode;     //IE
+        }else if(evt){
+            key = evt.which;     //firefox
+        }
+
+        if(key==13){
+            if(cloob_search_activeRowId_arr[el.id] && c_$(cloob_search_activeRowId_arr[el.id])){
+                c_$(cloob_search_activeRowId_arr[el.id]).onclick();
+            }
+            return ;
+        }
+
+        if(key==38 || key==40){
+            var type = (key==38) ? 'up' : 'down' ;
+            cloob_search_ChangeActiveRow(el,type);
+            return ;
+        }
+
+
+        clearInterval(cloob_search_Timer);
+
+        cloob_search_Timer = setTimeout(function () {
+            do_cloob_search(el,options);
+        }, 500);
+    }
+
+    function do_cloob_search(el,options){
+
+
+//        options.clickFunc;           javascript row click function name --- def : call_child_onclick
+//        options.searchType;          user , friend , club , all --- def : user
+//        options.resultCnt;          def : 8
+//        options.minSearchChar;      def : 1
+//        options.searchValueType;    full , last --- def : full ---- if ==last  firstchar to be @
+//        options.viewRowType;    full , simple , nopic --- def : full
+
+
+        var minSearchChar = parseInt(options.minSearchChar) ? options.minSearchChar : 1;
+        var searchValueType = (options.searchValueType) ? options.searchValueType : 'full';
+        var searchVal = '';
+        var el_value = el.value;
+
+        if(searchValueType=='full' &&  el_value.length>=minSearchChar){
+            searchVal = el_value;
+        }
+
+        if(searchValueType=='last' &&  el_value.indexOf('@')!=-1){
+            var indexOfAt = el_value.indexOf('@');
+            if(indexOfAt==0 || el_value[(indexOfAt-1)]==' '){
+
+                searchVal = el_value.split('@')[1];
+                if(searchVal.length < minSearchChar){
+                    searchVal = '';
+                }
+            }
+        }
+
+        var searchDivId = 'searchDiv_'+el.id;
+
+        if(searchVal!=''){
+            if(!cloob_search_Arr[el.id] || searchVal!=cloob_search_Arr[el.id] || c_$(searchDivId).style.display == 'none'){
+
+                cloob_search_Arr[el.id] =  searchVal;
+
+                if(!c_$(searchDivId)){
+                    var newdiv=document.createElement("div");
+                    newdiv.className ='SearchDiv';
+                    newdiv.setAttribute("id",searchDivId);
+                    el.parentNode.appendChild(newdiv) ;
+
+                  //  var targetCoordinate = c_getCoordinates(el);
+
+                    c_$(searchDivId).style.top = (el.offsetTop + el.offsetHeight)+'px';
+                    c_$(searchDivId).style.left = el.offsetLeft+'px';
+                    c_$(searchDivId).style.width = (el.offsetWidth-3)+'px';
+                }
+                c_$(searchDivId).innerHTML = '';
+
+                var param = '';
+                param += 'clickFunc/'+((options.clickFunc) ? options.clickFunc : 'call_child_onclick')+'/';
+                param += 'searchType/'+((options.searchType) ? options.searchType : 'user')+'/';
+                param += 'viewRowType/'+((options.viewRowType) ? options.viewRowType : 'full')+'/';
+                param += 'resultCnt/'+((options.resultCnt) ? options.resultCnt : '8')+'/';
+                param += 'elid/'+el.id+'/?';
+                param += 'searchVal='+searchVal;
+
+                getContent(null, {href:'http://www.cloob.com/profile/search/quicksearch/username//'+param,target:searchDivId,progresstype:'hidden',cache:true},true);
+                c_$(searchDivId).style.display = 'inline';
+            }
+        }
+        else if(c_$(searchDivId)){
+            c_$(searchDivId).style.display = 'none';
+        }
+    }
+
+
+
+
+
+
+    function createCookie(name,value,days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }
+        else var expires = "";
+        document.cookie = name+"="+value+expires+"; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+
+
+    var lastMouseOverTime = parseInt(Math.round((new Date()).getTime() / 1000));
+    createCookie('LMOT',lastMouseOverTime,2)  ;
+	function bodyMouseOver(){
+				try {
+            lastMouseOverTime = Math.round((new Date()).getTime() / 1000);
+            return true ;
+		}
+		catch(e){}
+	}
+
+
+    var lastChatResponse ;
+    setInterval(function(){
+        var chatResponse_cookie = readCookie('CR');
+        if(lastChatResponse!=chatResponse_cookie){
+            lastChatResponse = lastChatResponse ;
+            handleResponse(JSON.decode(decodeURI(chatResponse_cookie)),true); // CR : chatResponse
+        }
+
+    },5000);
+    setInterval(function(){
+        var LastMouseOverTime = readCookie('LMOT') ;    // LMOT : LastMouseOverTime
+        if(lastMouseOverTime>LastMouseOverTime){
+            createCookie('LMOT',lastMouseOverTime,2)  ;
+        }
+    },30000);
+
+    createCookie('IdM','no',5)  ;   // IdM : idleMode
+
+    
+    function chatResponseGotIt(){
+        getContent(null, {href:'http://www.cloob.com/profile/chat/delofflinemsg/username/',target:'hiddenDiv',progresstype:'hidden',confirm:'با انجام این کار کلیه گفتگوهای دریافتی نخوانده شما تا کنون ، حذف خواهد گردید . آیا برای انجام این کار اطمینان دارید ؟'},true);
+        hidemessage();
+        gethideMessage('message_div');
+    }
+
+
+	</script>
+
+
+<script type="text/javascript" src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/g.js"></script>
+<script type="text/javascript" src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/other.js"></script>
+
+<style type="text/css">
+/*<![CDATA[*/
+@import url(http://static.cloob.com/public/styles/run/style.v110.css);
+@import url(http://static.cloob.com/public/styles/run/style.n2.v13.css);
+@import url(http://static.cloob.com/public/styles/run/share.v7.css);
+/*]]>*/
+</style>
+
+
+<script type="text/javascript">
+
+    urlPublicBase = 'http://static.cloob.com/public';
+
+    //////// Replace User/ with Profile/ in ajax url calling ///////////////////////////
+     var OldgetContent = getContent;
+     getContent = function (el, params,ajax){
+         if(params.href && params.href.indexOf('user/')!=-1 && params.href.indexOf('/key/')==-1){
+             params.href = params.href.replace('user/','profile/');
+         }
+         return OldgetContent(el, params,ajax);
+     }
+    //////// Replace User/ with Profile/ in ajax url calling ///////////////////////////
+
+		var userInfo = new Array();
+		var clubInfo = new Array();
+		var showUserInfoLayerTimer;
+		var hideUserInfoLayerTimer;
+		
+		clubInfoOnlineShow = function(layerCode){
+			c_$('clubInfo_onlineTooltip_'+layerCode).style.display='inline';
+		}
+		clubInfoOnlineHide = function(layerCode){
+			c_$('clubInfo_onlineTooltip_'+layerCode).style.display='none';
+		}
+		showUserInfoLayer_dataEmpty = function(){
+			c_$('n2_userInfo_layer_chat').innerHTML = '';
+			c_$('n2_userInfo_layer_Name').innerHTML = '';
+			c_$('n2_userInfo_layer_Name').href = '';
+			c_$('n2_userInfo_layer_msg_link').href = '';
+			c_$('n2_userInfo_layer_ImgTag').src = '';
+			c_$('n2_userInfo_layer_descr').innerHTML = '';
+			c_$('n2_userInfo_layer_msg').style.display = 'none';
+			
+		}
+		showUserInfoLayer_fillUserData = function(layerCode,userId){
+			if((userInfo[userId]['online'] && userInfo[userId]['friend'] && userId!=0 && 0)){
+				c_$('n2_userInfo_layer_msg').style.display = 'none';
+				var chatEnter = urlBase+'/profile/chat/managepage/userid/0#chat__&&&__'+userInfo[userId]["username"]+'__&&&__'+userInfo[userId]["firstname"];
+				c_$('n2_userInfo_layer_chat').innerHTML = '<div onclick="getpopup(\''+chatEnter+'\')">'+'گفتگو'+'</div>';
+			} else {
+				c_$('n2_userInfo_layer_msg').style.display = 'block';
+				c_$('n2_userInfo_layer_chat').innerHTML = '';
+			}
+			
+			c_$('n2_userInfo_layer_Name').innerHTML = userInfo[userId]['fullname'];
+			c_$('n2_userInfo_layer_Name').href = userInfo[userId]['link'];
+			c_$('n2_userInfo_layer_msg_link').href = userInfo[userId]['msgLink'];
+			c_$('n2_userInfo_layer_ImgTag').src = '';
+			c_$('n2_userInfo_layer_ImgTag').src = userInfo[userId]['photoSrc'];
+			c_$('n2_userInfo_layer_descr').innerHTML = (userInfo[userId]['descr'] ? userInfo[userId]['descr'] : userInfo[userId]["username"]);
+			
+		}
+		showUserInfoLayer_fillClubData = function(layerCode,clubId){
+			c_$('n2_userInfo_layer_Name').innerHTML = clubInfo[clubId]['name'];
+			c_$('n2_userInfo_layer_Name').href = clubInfo[clubId]['link'];
+			c_$('n2_userInfo_layer_descr').innerHTML = clubInfo[clubId]['descr'];
+			c_$('n2_userInfo_layer_ImgTag').src = '';
+			c_$('n2_userInfo_layer_ImgTag').src = clubInfo[clubId]['photoSrc'];
+		}
+		showUserInfoLayer = function(layerCode,userId,clubId){
+			clearInterval(showUserInfoLayerTimer);
+			
+			showUserInfoLayerTimer = setTimeout(function () {
+				
+				showUserInfoLayer_dataEmpty();
+				
+				if(userId){
+					showUserInfoLayer_fillUserData(layerCode,userId);	
+				} else {
+					showUserInfoLayer_fillClubData(layerCode,clubId);
+				}
+				
+				
+				var userInfo_layerPosition = c_getPosition(c_$('userInfo_'+layerCode));
+				var scrollTopVal = 0 ;
+				var pos = 'absolute';
+				
+				var isWrapperCh = isWrapper(c_$('userInfo_'+layerCode),'inner-container',true);
+				if(isWrapperCh.type){
+					scrollTopVal = isWrapperCh.scrollTop;
+					var pos = 'fixed';
+                    elWrapper = c_$('inner-container');
+				}
+				else{
+					isWrapperCh = isWrapper(c_$('userInfo_'+layerCode),'content-image-layer',true);
+					if(isWrapperCh.type){
+						scrollTopVal = isWrapperCh.scrollTop;
+						var pos = 'fixed';
+                        elWrapper = c_$('content-image-layer');
+					}
+					else{
+						isWrapperCh = isWrapper(c_$('userInfo_'+layerCode),'wrapper',true);
+						if(isWrapperCh.type){
+							scrollTopVal = isWrapperCh.scrollTop;
+                            elWrapper = c_$('wrapper');
+						}
+					}
+				}
+
+                try{
+                    scrollTopVal = scrollTopVal+elWrapper.scrollTop;
+                }
+                catch(e){}
+				c_$('n2_userInfo_layer').style.top = (userInfo_layerPosition.y - scrollTopVal) +'px';
+				
+				var layerLeft = (userInfo_layerPosition.x<800) ? userInfo_layerPosition.x : userInfo_layerPosition.x - 250 - parseInt(c_$('userInfo_'+layerCode).offsetWidth);
+				
+				c_$('n2_userInfo_layer').style.left = (layerLeft+parseInt(c_$('userInfo_'+layerCode).offsetWidth))+'px';
+
+				c_$('n2_userInfo_layer').style.opacity=0.05;
+				
+				c_$('n2_userInfo_layer').style.position = pos;
+				c_$('n2_userInfo_layer').style.display = 'block';
+				c_Easing('n2_userInfo_layer',{opacity:{end:1,time:150}},'');
+				
+			}, 500);
+		};
+		
+		hideUserInfoLayer = function(){
+			clearInterval(showUserInfoLayerTimer);
+			clearInterval(hideUserInfoLayerTimer);
+			hideUserInfoLayerTimer = setTimeout(function () {
+				c_Easing('n2_userInfo_layer',{opacity:{end:0.05,time:160}},"c_$('n2_userInfo_layer').style.display = 'none'");
+			}, 100);
+		}
+	</script>
+
+    <script type="text/javascript">
+        rowN2_over = function(elm){
+            elm.className = elm.className+' rowN2_hover';
+        }
+        rowN2_out = function(elm){
+            elm.className = elm.className.replace("rowN2_hover", "");
+        }
+
+        ht_over = function(elm){
+            elm.className = elm.className+' hideToolset_hover';
+        }
+        ht_out = function(elm){
+            elm.className = elm.className.replace("hideToolset_hover", "");
+        }
+
+
+
+
+    </script>
+
+
+
+
+
+    
+
+
+
+</head>
+<body onmouseover="bodyMouseOver()">
+
+<div id="n2_userInfo_layer" onmouseout="hideUserInfoLayer();" onmouseover="clearInterval(hideUserInfoLayerTimer);"><div class="n2_userInfo_layer_Img"><img id="n2_userInfo_layer_ImgTag"></div><div class="n2_userInfo_layer_leftCol"><a id="n2_userInfo_layer_Name"></a><div id="n2_userInfo_layer_descr"></div><div id="n2_userInfo_layer_tools"><div id="n2_userInfo_layer_chat"></div><div id="n2_userInfo_layer_msg"><a href="http://www.cloob.com/profile/message/send/username/pajoheshgarangavan/close/true/atrty/1350480806/avrvy///key/cb32ec84a886bd5ea3cf3dcc5bfab3ce60ca8086" onclick=" ; getContent(this, {target:'wrapper-layer'},true); return false;" title="" class="" id="n2_userInfo_layer_msg_link">ارسال پیام</a></div></div></div></div>
+<div id="wrapper-image-layer" style="display:none">
+    <div id="wrapper-image-layer-loading" style="display:none;float:left;width:100px;height:30px;margin:3px 20px">
+        <img src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/loader2.gif" alt="loading" style="margin:0px auto;width:90px;height:25px">
+    </div>
+</div>
+<div id="content-image-layer"></div>
+<a class="a2a_dd" href="http://www.addtoany.com/share_save" style="display:none"></a>
+<script type="text/javascript">
+    a2a_config = {
+        linkname: 'cloob.com',
+        linkurl: 'http://www.cloob.com/',
+        onclick:1,
+        show_title:1
+    };
+    var _addToAnyBaseUrl = "http://static.cloob.com/public/images/etc/addtoany";
+</script>
+<!--<script type="text/javascript" src="http://static.cloob.com/public/scripts/run/share_page.js?v1"></script>-->
+
+
+<div id="photo-face-show">
+    <div id="photo-face-show-inner">
+    </div>
+</div>
+
+<div id="photo-face-show-name">
+</div>
+
+<div id="photoTag-layer" style="display:none">
+    <div class="photoTag-wrapper" onclick="setMousePosition(event,-1)">
+        <div class="photoTag-inner">
+            <div>
+            </div>
+        </div>
+    </div>
+    <div id="photo-friend-list" style="direction:rtl">
+        تا بارگذاری لیست دوستان خود ، چند لحظه صبر کنید ...
+    </div>
+</div>
+
+<div id="loading-temp" style="display:none">
+    <img src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/loading.gif" alt="loading" style="margin-top:40px;"></div>
+<div id="close-image-layer" onclick="closeFullAlbum()"></div>
+
+<div id="userinfo-wrapper">
+    <div id="userinfo-right"></div>
+    <div id="userinfo-main"></div>
+    <div id="userinfo-close" onclick="hideLayerDetail('userinfo-wrapper')"><img src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/userinfo_close.gif" alt="userinfo close"></div>
+    <div id="userinfo-left"></div>
+</div>
+<div id="hiddenDiv" style="display:none"></div>
+
+<div id="borderEffectWrapper" style="position:absolute;top:0px;left:0px;width:0px;height:0px;z-index:999999999999">
+</div>
+
+<div id="ajax-load">
+</div>
+
+<div id="ajax_msg" style="display:none">
+    در حال بارگزاری
+</div>
+
+<div id="ajax-inner" class="layer-loading" style="position:absolute;display:none;margin:0px auto;z-index:50000000">
+
+        <iframe src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/showads.htm" frameborder="0" scrolling="no" width="120px" height="120px"></iframe>    
+</div>
+
+<div id="ajaxrequest"><script src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/a.htm" type="text/javascript"></script></div>
+<div id="message_div" onclick="hidemessage();"></div>
+
+
+
+<script type="text/javascript">
+    var lastWrapperPageLayerOpen = '';
+    function wrapperPage(type){
+        if(type=='show'){
+            c_$('header_new_searchWrapper').style.height = c_$('wrapper').offsetHeight+'px';
+            c_$('header_new_searchWrapper').style.display = 'block';
+        } else if(type=='close'){
+            c_$('header_new_searchWrapper').style.display = 'none';
+            if(lastWrapperPageLayerOpen) c_$(lastWrapperPageLayerOpen).style.display = 'none';
+        }
+    }
+</script>
+<style>
+    .header_new2_secondLine_linkSet_black{
+        background: #000;
+        border-radius: 3px;
+        color: #FFF;
+        padding: 0px 10px;
+        direction:rtl;
+    }
+</style>
+<div class="clearfix header_new2" id="SiteHeader" style="position: fixed; top: 0px; z-index: 9999; width: 100%;">
+<div class="clearfix header_new2_firstLine">
+
+
+
+    <div class="clearfix header_new2_width">
+
+        <div class="header_new2_logo">
+
+            <div class="headerNew2_online">
+                <div id="onlineStatus-wrapper"></div>
+                <div class="" id="online-members">
+                    <span id="onlinetotal">6275</span>
+
+                    <ul id="online-detail" style="display:none;z-index:90000;">
+                        <li>در دسترس:
+                            <span id="available_count">5465</span> نفر</li>
+                        <li>رفتن که بیان:
+                            <span id="right_back_count">0</span> نفر</li>
+                        <li>تعداد اعضای مشغول:
+                            <span id="busy_count">47</span> نفر</li>
+                        <li>تعداد اعضای نامرئی:
+                            <span id="invisible_count">763</span> نفر</li>
+                        <li>پشت میز نیستن!:
+                            <span id="not_at_desk_count">0</span> نفر</li>
+                    </ul>
+
+                </div>
+
+                <div style="z-index:9000005;border:0px solid #F00;position: relative;">
+                    <div id="headerNew_activityNotify" class="secondary-left-col">
+                                            </div>
+                    <div id="headerNew_userStatus" class="secondary-left-col" style="position:absolute;width:178px;z-index:9000005;border:1px solid #ccc;display:none;background:#EEE;padding:0px;left:161px;top:14px;text-align:right;">
+                        <div style="padding:5px;border-bottom:1px solid #CCC;cursor:pointer" onclick="setUserstatus('available')">در دسترس</div>
+                        <div style="padding:5px;border-bottom:1px solid #CCC;cursor:pointer" onclick="setUserstatus('invisible')">نامرئی</div>
+                        <div style="padding:5px;border-bottom:1px solid #CCC;cursor:pointer" onclick="setUserstatus('busy')">مشغول</div>
+                    </div>
+                                    </div>
+
+            </div>
+
+
+
+            
+        </div>
+
+        <div class="header_new2_firstLine_tabset">
+            <ul>
+                <li class=" header_new2_firstLine_tabset_home"><a href="http://www.cloob.com/" onmousedown="this.href='http://www.cloob.com/'" title="خانه" class="">خانه</a></li><li class="selected"><a href="http://www.cloob.com/club/rating/list" onmousedown="this.href='http://www.cloob.com/club/rating/list'" title="کلوب ها" class="">کلوب ها</a></li><li class=""><a href="http://www.cloob.com/profile/search" onmousedown="this.href='http://www.cloob.com/profile/search'" title="جستجوی اعضا" class="">جستجوی اعضا</a></li><li class=""><a href="http://www.cloob.com/answer/main/home" onmousedown="this.href='http://www.cloob.com/answer/main/home'" title="سیستم پرسش" class="">سیستم پرسش</a></li><li class=""><a href="http://www.cloob.com/game/flash/list/type/all" onmousedown="this.href='http://www.cloob.com/game/flash/list/type/all'" title="بازی ها" class="">بازی ها</a></li>
+            </ul>
+            
+
+        </div>
+
+        <div class="header_new2_firstLine_diffBg">
+
+                        <div id="beta" class="header_new2_firstLine_diffBg_time" style="margin-right:35px;">
+                <div id="maintime" style="direction:ltr;width:25px">17:03'</div>
+                <div>
+                    1391/07/26                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix header_new2_secondLine">
+
+    <div class="clearfix header_new2_width">
+        <div class="header_new2_secondLine_linkSet">
+
+            <a href="http://www.cloob.com/club/rating/list" onmousedown="this.href='http://www.cloob.com/club/rating/list'" title="طبقه بندی کلوب ها" class=""><i><u>طبقه بندی کلوب ها</u></i></a><a href="http://www.cloob.com/" title="" class=""><i><u></u></i></a><a href="http://www.cloob.com/club/room/roomlist" onmousedown="this.href='http://www.cloob.com/club/room/roomlist'" title="اتاقهای گفتگو" class=""><i><u>اتاقهای گفتگو</u></i></a>        </div>
+
+
+        <div class="header_new2_secondLine_diffBg">
+
+
+            <div class="clearfix">
+                <a href="http://www.cloob.com/profile/login/authenticate" onmousedown="this.href='http://www.cloob.com/profile/login/authenticate'" title="" class="">ورود</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.cloob.com/profile/register/step1" onmousedown="this.href='http://www.cloob.com/profile/register/step1'" title="" class="">ثبت نام</a>&nbsp;&nbsp;            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+    setUserstatus = function(status,chSt){
+        c_$("onlineStatusHeaderIcon").className="online_icon  "+ status;
+//		c_$('userOnlineStatus').value = status;
+        userOnlineStatusVal = status;
+        mkafter();
+
+        if(chSt!='no'){
+            showChangeStatus();
+        }
+    };
+
+    showChangeStatus = function(){
+        if(c_$('headerNew_userStatus').style.display == 'none'){
+            c_$('headerNew_userStatus').style.display = 'block';
+        } else {
+            c_$('headerNew_userStatus').style.display = 'none';
+        }
+    };
+
+    activityCountFadeing2 = function (){
+        if(c_$('headerActivityNotify_cnt').style.backgroundColor == 'red'){
+            c_$('headerActivityNotify_cnt').style.backgroundColor = '#D70303';
+        }
+        else{
+            c_$('headerActivityNotify_cnt').style.backgroundColor = 'red';
+        }
+        setTimeout(function () {
+            activityCountFadeing2();
+        }, 500);
+    };
+
+    activityCountFadeing2();
+
+    function  headerNew_activityNotify_onclick(type){
+        lastWrapperPageLayerOpen = 'headerNew_activityNotify';
+
+        if(type == 'close'){
+            c_Easing('headerNew_activityNotify',{width:{end:0,time:150}},"c_$('headerNew_activityNotify').innerHTML = '';c_$('headerNew_activityNotify').style.display = 'none';");
+        } else {
+            c_$('headerNew_activityNotify').style.width = '0px';
+            c_$('headerNew_activityNotify').style.overflowX = 'hidden';
+
+            c_Easing('headerNew_activityNotify',{width:{end:280,time:150}},'');
+            c_$('headerActivityNotify_cnt').style.display = 'none';
+            c_$('headerNew_activityNotify').style.display = 'block';
+        }
+
+
+    }
+</script>
+
+<style type="text/css">#wrapper{margin-top:70px}</style><div class="clearfix"><div id="wrapper"><div id="header_new_searchWrapper" style=";filter:alpha(opacity=70);-moz-opacity:.70;opacity:.70;" onclick="frameClose()"></div>
+
+<div id="themeArea" class="clearfix">
+    <div id="themeArea_back">
+        <div id="themeArea_mid">
+            <div id="themeArea_front">
+                                <div id="container" class="clearfix">
+                                        <div id="stylestr">
+<style type="text/css">
+#themeArea .system-color1-user{
+	background-color:#Array;
+}
+#themeArea .system-color2-user{
+	background-color:#Array;
+}
+#themeArea .system-color1-club{
+	background-color:#Array;
+}
+#themeArea .system-color2-club{
+	background-color:#Array;
+}
+ #themeArea{} #themeArea_front{ padding:0px;}</style>
+</div>
+<div class="n2_wrapper clearfix">
+<div class="n2_mainRightCol">
+
+      <style type="text/css">
+    .fanPage_menu_descr{
+        direction: rtl;
+        text-align: justify;
+        line-height: 19px;
+        margin: 5px 30px 10px 0px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    .fanPage_menu_descr_cnt{
+        direction: rtl;
+        text-align: right;
+        margin: 10px 30px 20px 0px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        color: #555;
+    }
+    .fanPage_menu_descr_cnt b{
+        display: block;
+        font-size: 15px;
+        color: #000;
+    }
+    .fanPageUrgentMessage{
+        background: #FFFBE0;
+        border:1px solid #E9DF97;
+        border-right:0px solid #E9DF97;
+        direction: rtl;
+        text-align: justify;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+</style>
+<br><div id="userInfo_4742653" onmouseover="showUserInfoLayer(4742653,0,8972);" onmouseout="hideUserInfoLayer();" class="n2_clubInfo_pic n2_userInfo_pic  clubInfoSize200"><a href="http://www.cloob.com/clubname/pajoheshgarangavan" title="" class=""><img src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/8972.jpg" alt="باشگاه پژوهشگران جوان , pajoheshgarangavan" class="clubInfoSize200"></a></div><script type="text/javascript">if(!clubInfo[8972]){clubInfo[8972] = new Array();clubInfo[8972]['name'] = 'باشگاه پژوهشگران جوان';clubInfo[8972]['photoSrc'] 	= 'http://static.cloob.com/public/user_data/club_photo/2/8972.jpg';clubInfo[8972]['link'] 	= 'http://www.cloob.com/clubname/pajoheshgarangavan';clubInfo[8972]['descr'] 	= '156 بحث   ، 23 مقاله  ، 3 لینک  ';}</script><style type="text/css">.clubInfoSize200{	width:200px;	-height:200px;}</style><div id="right-menu"><ul id="ver_menu"><li class="unactive" onclick="setActiveMenu(this,'active system-color1-club')"><a href="http://www.cloob.com/clubname/pajoheshgarangavan" onmousedown="this.href='http://www.cloob.com/clubname/pajoheshgarangavan'" title="" class="">صفحه اصلی کلوب</a></li><li class="unactive" onclick="setActiveMenu(this,'active system-color1-club')"><a href="http://www.cloob.com/club/room/list/clubname/pajoheshgarangavan/wrapper/true" onmousedown="this.href='http://www.cloob.com/club/room/list/clubname/pajoheshgarangavan/wrapper/true'" title="" class="" rel="nofollow" style="">اتاق گفتگو (0)</a></li></ul></div><div style="height:20px"></div><div id="qualityShow">	
+	<!-- Right ends --></div><div class="boxN2 clearfix"><div class="clearfix boxN2_header clearfix"><h2 class="boxN2_header_title"><a href="http://www.cloob.com/etc/main/advertise" onmousedown="this.href='http://www.cloob.com/etc/main/advertise'" title="" class="">تبلیغات</a></h2><div class="boxN2_header_tool"></div></div><div class="clearfix"></div><div class="boxN2_content"><style type="text/css">.advert_vert{margin:3px 0px}</style><center><div><iframe src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/showads_002.htm" frameborder="0" scrolling="no" width="180px" height="240px"></iframe></div><div class="advert_vert"><div style="width:180px;background: #E5E5E5;"><iframe src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/showads_003.htm" frameborder="0" scrolling="no" width="120px" height="240px"></iframe></div></div></center></div><div class="boxN2_footer_button"><a onclick="closewrapper();" class="boxN2_CloseLayer">بستن</a></div></div><style type="text/css">
+.userMenu_profile_wrapper{
+	background:#FFF;
+	margin-bottom: 10px;
+}
+.userMenu_profile i{
+	display:block;
+	font-style: normal;
+	margin: 10px 0px;
+
+}
+.userMenu_profile{
+	direction:rtl;
+	text-align:right;
+	margin:5px 10px;
+}
+.userMenu_profile b{
+	display:block;
+	font-weight:normal;
+	color:#888;
+	margin: 2px 0px;
+}
+</style>
+      
+      <div class="boxN2 clearfix"><div class="clearfix boxN2_header clearfix"><h2 class="boxN2_header_title"><a href="http://www.cloob.com/club/link/list/clubname/pajoheshgarangavan/wrapper/true" onmousedown="this.href='http://www.cloob.com/club/link/list/clubname/pajoheshgarangavan/wrapper/true'" title="" class="">لینکستان</a></h2><div class="boxN2_header_tool"></div></div><div class="clearfix"></div><div class="boxN2_content"><br>		<div style="width:155px;overflow:hidden;padding:5px"><a href="http://www.hamkelasi.com/" rel="nofollow" target="_blank">همکلاسی</a><br></div>
+				<div style="width:155px;overflow:hidden;padding:5px"><a href="http://www.mardoman.com/" rel="nofollow" target="_blank">پورتال جوانان ایرانی</a><br></div>
+				<div style="width:155px;overflow:hidden;padding:5px"><a href="http://www.ntp.mycloob.com/" rel="nofollow" target="_blank">بررسی فناوری های نوین در ایران</a><br></div>
+		</div><ul class="toolset clearfix"><li style="float:left"><a href="http://www.cloob.com/club/link/list/clubname/pajoheshgarangavan/wrapper/true" onmousedown="this.href='http://www.cloob.com/club/link/list/clubname/pajoheshgarangavan/wrapper/true'" title="" class="" style="background: url(http://static.cloob.com/public/images/icon/gen3.gif) no-repeat 98% -265px;">لیست کامل لینک ها</a></li></ul><div class="boxN2_footer_button"><a onclick="closewrapper();" class="boxN2_CloseLayer">بستن</a></div></div></div>
+<!--<div class="main-left-col">-->
+<div class="n2_mainLeftCol">
+		
+	
+				<div class="clearfix visitedProfileTop"><div class="clearfix"><div class="visitedProfileTop_right"><h1 style="font-family:arial;font-size:20px;font-weight:normal">باشگاه پژوهشگران جوان</h1><br><i><h2 style="font-size:12px;font-weight:normal">pajoheshgarangavan</h2></i></div><div class="visitedProfileTop_left">تاسیس: 3 تیر 1384&nbsp;&nbsp;<a href="http://www.cloob.com/club/profile/showdesc/clubname/pajoheshgarangavan" onclick=" ; getContent(this, {target:'clubIndex_secondary-right-col'},true); return false;" onmousedown="this.href='http://www.cloob.com/club/profile/showdesc/clubname/pajoheshgarangavan'" title="" class="">پروفایل کلوب</a><br>مدیر کلوب: <a href="http://www.cloob.com/name/farshidati" onmousedown="this.href='http://www.cloob.com/name/farshidati'" title="" class="">فرشید رحمانی</a> - <a href="http://www.cloob.com/club/member/listmod/clubname/pajoheshgarangavan" onclick=" ; getContent(this, {target:'main',cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/member/listmod/clubname/pajoheshgarangavan'" title="" class=""><span>معاونان</span></a><div class="clubClub_urgentmsg"></div></div></div></div>		
+		<script type="text/javascript">
+
+var BrowserDetect = {
+init: function () {
+this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+this.version = this.searchVersion(navigator.userAgent)
+|| this.searchVersion(navigator.appVersion)
+|| "an unknown version";
+this.OS = this.searchString(this.dataOS) || "an unknown OS";
+},
+searchString: function (data) {
+for (var i=0;i<data.length;i++) {
+var dataString = data[i].string;
+var dataProp = data[i].prop;
+this.versionSearchString = data[i].versionSearch || data[i].identity;
+if (dataString) {
+if (dataString.indexOf(data[i].subString) != -1)
+return data[i].identity;
+}
+else if (dataProp)
+return data[i].identity;
+}
+},
+searchVersion: function (dataString) {
+var index = dataString.indexOf(this.versionSearchString);
+if (index == -1) return;
+return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+},
+dataBrowser: [
+{
+string: navigator.userAgent,
+subString: "Chrome",
+identity: "Chrome"
+},
+{ string: navigator.userAgent,
+subString: "OmniWeb",
+versionSearch: "OmniWeb/",
+identity: "OmniWeb"
+},
+{
+string: navigator.vendor,
+subString: "Apple",
+identity: "Safari",
+versionSearch: "Version"
+},
+{
+prop: window.opera,
+identity: "Opera"
+},
+{
+string: navigator.vendor,
+subString: "iCab",
+identity: "iCab"
+},
+{
+string: navigator.vendor,
+subString: "KDE",
+identity: "Konqueror"
+},
+{
+string: navigator.userAgent,
+subString: "Firefox",
+identity: "Firefox"
+},
+{
+string: navigator.vendor,
+subString: "Camino",
+identity: "Camino"
+},
+{ // for newer Netscapes (6+)
+string: navigator.userAgent,
+subString: "Netscape",
+identity: "Netscape"
+},
+{
+string: navigator.userAgent,
+subString: "MSIE",
+identity: "Explorer",
+versionSearch: "MSIE"
+},
+{
+string: navigator.userAgent,
+subString: "Gecko",
+identity: "Mozilla",
+versionSearch: "rv"
+},
+{ // for older Netscapes (4-)
+string: navigator.userAgent,
+subString: "Mozilla",
+identity: "Netscape",
+versionSearch: "Mozilla"
+}
+],
+dataOS : [
+{
+string: navigator.platform,
+subString: "Win",
+identity: "Windows"
+},
+{
+string: navigator.platform,
+subString: "Mac",
+identity: "Mac"
+},
+{
+string: navigator.userAgent,
+subString: "iPhone",
+identity: "iPhone/iPod"
+},
+{
+string: navigator.platform,
+subString: "Linux",
+identity: "Linux"
+}
+]
+
+};
+BrowserDetect.init();
+
+
+
+//alert(BrowserDetect.browser+'___'+BrowserDetect.version);
+startList = function() {
+	
+//	if (document.all&&document.getElementById) {
+	if (BrowserDetect.browser=='Explorer' && BrowserDetect.version<7) 
+	{
+		navRoot = document.getElementById("nav");
+		for (i=0; i<navRoot.childNodes.length; i++) {
+			node = navRoot.childNodes[i];
+	
+			if (node.nodeName=="LI" && node.childNodes.length==2) {
+
+			node.onmouseover=function() {
+				this.style.position ="relative";
+				this.childNodes[1].style.visibility ="visible";
+			}
+			
+			node.onmouseout=function() {
+				this.childNodes[1].style.visibility ="hidden";
+			}
+		}
+	}
+}
+}
+window.onload=startList;
+
+</script>
+		<div id="categories" class="horNav clearfix"><ul id="nav" class=" dropdown dropdown-horizontal" style="float: right;"><li class="unactive "><a href="http://www.cloob.com/club/visit/show/clubname/pajoheshgarangavan" onmousedown="this.href='http://www.cloob.com/club/visit/show/clubname/pajoheshgarangavan'" title="" class="">بازدید  کنندگان</a></li><li class="unactive "><a href="http://www.cloob.com/club/member/list/clubname/pajoheshgarangavan/wrapper/true" onmousedown="this.href='http://www.cloob.com/club/member/list/clubname/pajoheshgarangavan/wrapper/true'" title="" class=""><b>310</b> عضو</a></li><li class="unactive "><a href="http://www.cloob.com/club/post/list/clubname/pajoheshgarangavan/wrapper/true" onmousedown="this.href='http://www.cloob.com/club/post/list/clubname/pajoheshgarangavan/wrapper/true'" title="" class=""><b>156</b> بحث</a></li><li class="unactive "><a href="http://www.cloob.com/club/article/list/clubname/pajoheshgarangavan/wrapper/true" onmousedown="this.href='http://www.cloob.com/club/article/list/clubname/pajoheshgarangavan/wrapper/true'" title="" class=""><b>23</b> مقاله</a></li><li class="unactive dir"><a href="#">محتوای کلوب</a><ul><li class="unactive "></li><li class="unactive "><a href="http://www.cloob.com/club/link/list/clubname/pajoheshgarangavan" onmousedown="this.href='http://www.cloob.com/club/link/list/clubname/pajoheshgarangavan'" title="" class="" style="background: url(http://static.cloob.com/public/images/icon/club1.gif) no-repeat 98% -115px;"><b>3</b> لینک</a></li><li class="unactive "></li><li class="unactive "></li><li class="unactive "></li><li class="unactive "><a href="http://www.cloob.com/club/share/list/clubname/pajoheshgarangavan" onmousedown="this.href='http://www.cloob.com/club/share/list/clubname/pajoheshgarangavan'" title="" class="" style="background: url(http://static.cloob.com/public/images/icon/share3.gif) no-repeat 98% -445px;">لینک های داغ</a></li></ul></li></ul></div>
+        
+		<div id="main">
+						
+			<div class="clearfix tabset">
+				<ul id="tabset_507eb3a650f14" class="clearfix">
+					<li class="unactive" onclick="setActiveTab('tabset_507eb3a650f14', this )"><a href="http://www.cloob.com/club/article/list/clubname/pajoheshgarangavan" onmousedown="this.href='http://www.cloob.com/club/article/list/clubname/pajoheshgarangavan'" title="" class=""><span>عنوان مقاله</span></a></li><li class="tabsetClick"><a href="http://www.cloob.com/club/article/feed/clubname/pajoheshgarangavan" onmousedown="this.href='http://www.cloob.com/club/article/feed/clubname/pajoheshgarangavan'" title="" class="" target="_blank"><span>خبرمایه مقالات</span></a></li>
+				</ul>
+			</div>
+			<div class="tabsetContainer">
+	<div id="articleContent">
+		<div class="boxN2 clearfix"><div class="clearfix boxN2_header clearfix"><h2 class="boxN2_header_title">عنوان مقاله</h2><div class="boxN2_header_tool"></div></div><div class="clearfix"><span class="box_header_pager"><div class="pager"><ul><li><span class="current">1</span></li><li><a href="http://www.cloob.com/club/article/list/clubname/pajoheshgarangavan/articleid/1008/srch/%D9%87%D9%88%D8%B4%26amp%3Bzwnj%3B+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82/gencommentrefid/1008/curpage/2" onclick="getContent(this, {target:'articleContent' , cache:true},true); return false;" title="صفحه 2 از 3">2</a></li><li><a href="http://www.cloob.com/club/article/list/clubname/pajoheshgarangavan/articleid/1008/srch/%D9%87%D9%88%D8%B4%26amp%3Bzwnj%3B+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82/gencommentrefid/1008/curpage/3" onclick="getContent(this, {target:'articleContent' , cache:true},true); return false;" title="صفحه 3 از 3">3</a></li><li></li><li></li></ul></div></span></div><div class="boxN2_content">
+<div class="club-article"><table id="grid-1350480806507eb3a64ff7a" class="grid"><tbody><tr>
+			<th>&nbsp;</th>
+			<th>عنوان مقاله</th>
+			
+						<th>
+				 بروز رسانی			</th>
+</tr>
+ 
+<tr id="article_one20585" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		1	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/20585" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/20585'" title="نوابغ ایرانی چه ها كرده انداما قدیم" class="">» نوابغ ایرانی چه ها كرده انداما قدیم</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	22 تیر 1385
+</td>	
+</tr>
+ 
+<tr id="article_one19917" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		2	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/19917" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/19917'" title="   بزرگانی از ایران که ما بر دوش آنان ایستاده ایم" class="">»    بزرگانی از ایران که ما بر دوش آنان ایستاده ایم</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	17 تیر 1385
+</td>	
+</tr>
+ 
+<tr id="article_one16766" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		3	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/16766" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/16766'" title="وصیت  نامه کامل داریوش کبیر" class="">» وصیت  نامه کامل داریوش کبیر</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	28 خرداد 1385
+</td>	
+</tr>
+ 
+<tr id="article_one16709" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		4	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/16709" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/16709'" title="نظر بزرگان در  مورد زنان" class="">» نظر بزرگان در  مورد زنان</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	28 خرداد 1385
+</td>	
+</tr>
+ 
+<tr id="article_one11029" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		5	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/11029" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/11029'" title="هوش‌ مصنوعی با تاكید بر منطق فازی 1" class="">» هوش‌ مصنوعی با تاكید بر منطق فازی 1</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	25 اردیبهشت 1385
+</td>	
+</tr>
+ 
+<tr id="article_one10124" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		6	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/10124" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/10124'" title="گوشی تلفن و صفحه كلید رایانه بیشترین آلودگی میكروبی را دارند." class="">» گوشی تلفن و صفحه كلید رایانه بیشترین آلودگی میكروبی را دارند.</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	19 اردیبهشت 1385
+</td>	
+</tr>
+ 
+<tr id="article_one10123" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		7	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/10123" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/10123'" title="خطر برخورد شهاب سنگ به كره زمین در قرن حاضر" class="">» خطر برخورد شهاب سنگ به كره زمین در قرن حاضر</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	19 اردیبهشت 1385
+</td>	
+</tr>
+ 
+<tr id="article_one4929" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		8	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/4929" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/4929'" title="پل ها و انواع آن( نوشته شده محسن سورگی    )" class="">» پل ها و انواع آن( نوشته شده محسن سورگی    )</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	17 فروردین 1385
+</td>	
+</tr>
+ 
+<tr id="article_one4414" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		9	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/4414" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/4414'" title="یافته های جدید اختر شناسان پیرامون ابر سیاه چاله ها" class="">» یافته های جدید اختر شناسان پیرامون ابر سیاه چاله ها</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	11 فروردین 1385
+</td>	
+</tr>
+ 
+<tr class="" id="article_one3984" onmouseover="this.className = 'over'" onmouseout="this.className = ''">
+<td>
+	<div style="width:20px">
+		10	</div>	
+</td>
+
+<td>
+	<div style="width:280px">
+		<a href="http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/3984" onclick=" ; getContent(this, {target: 'showarticle', cache:true},true); return false;" onmousedown="this.href='http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/3984'" title="آیا میدانید که :" class="">» آیا میدانید که :</a>	
+	</div>		
+</td>
+<td class="gridColor1">
+	6 فروردین 1385
+</td>	
+</tr>
+</tbody></table></div></div><div class="boxN2_footer_button"><a onclick="closewrapper();" class="boxN2_CloseLayer">بستن</a></div></div>
+<div id="showarticle">
+<div id="articleone">
+<div class="boxN2 clearfix"><div class="clearfix"></div><div class="boxN2_content">
+
+<div id="article_1008" class="rowN2 clearfix  rowN2_withRight                       rowN2_hover" onmouseover="rowN2_over(this)" onmouseout="rowN2_out(this)"><div class="rowN2_colR"><div id="userInfo_8854068" onmouseover="showUserInfoLayer(8854068,148830,0);" onmouseout="hideUserInfoLayer();" class="n2_userInfo_pic  userInfoSize"><div class="n2_userInfo_online n2_userInfo_online_small"></div><a href="http://www.cloob.com/name/phd_ss" title="" class=""><img src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/148830.jpg" alt="سعید صفا , phd_ss" class="userInfoSize"></a></div><script type="text/javascript">if(!userInfo[148830]){userInfo[148830] = new Array();userInfo[148830]['firstname'] = 'سعید';userInfo[148830]['fullname'] = 'سعید صفا';userInfo[148830]['photoSrc'] 	= 'http://static.cloob.com/public/user_data/user_photo/14/148830-b.jpg?5423';userInfo[148830]['link'] 	= 'http://www.cloob.com/name/phd_ss';userInfo[148830]['msgLink']	= 'http://www.cloob.com/user/message/send/username/phd_ss';userInfo[148830]['descr'] 	= 'مرد ، مجرد از شیراز<br>31 ساله ';userInfo[148830]['username']= 'phd_ss';userInfo[148830]['online']= false;userInfo[148830]['layerCode'] = '';}</script><script type="text/javascript">userInfo[148830]['layerCode'] += '8854068-';</script><style type="text/css">.userInfoSize{	width:px;	height:px;}</style></div><div class="rowN2_colL"><div class="rowN2_topBar"><b><a href="http://www.cloob.com/name/phd_ss" onmousedown="this.href='http://www.cloob.com/name/phd_ss'" title="" class="">سعید صفا</a></b> -  08:30 1384/12/8</div><div class="rowN2_title"><h1>هوش‌ مصنوعی با تاكید بر منطق فازی</h1></div><div class="rowN2_body"><div id="body_article_1008"><br>
+هوش‌ <font style="background-color:#FFFF33">مصنوعی</font> با <font style="background-color:#FFFF33">تاكید</font> بر <font style="background-color:#FFFF33">منطق</font> فازی<br>
+چكیده‌:<br>
+ هدف‌ از این‌ مقاله‌ آشنایی‌ با هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ به‌ عنوان‌ نماد دوران‌ فراصنعتی‌ ، نقش‌ و كاربرد آن‌ در صنایع‌ و مؤسسات ‌تولیدی‌ و شرحی مختصر درباره ی <font style="background-color:#FFFF33">منطق</font> فازی می‌باشد. بدین‌ منظور، سئوالاتی‌ نظیر  این‌ كه‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌چیست‌؟ تفاوت‌ هوش‌<font style="background-color:#FFFF33">مصنوعی</font>‌ و هوش‌ طبیعی‌ (انسانی‌) درچیست‌؟ شاخه‌های‌ عمده‌ ی هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ كدامند؟ طرح مسئله <font style="background-color:#FFFF33">منطق</font> فازی در هوش <font style="background-color:#FFFF33">مصنوعی</font> ؟  مطرح می شود و نهایتأ اجزای هوش <font style="background-color:#FFFF33">مصنوعی</font>
+ و كاربردهای‌ آن ‌در صنایع‌ و مؤسسات ‌تولیدی‌، زمینه ی ‌سیستم‌های‌ خبره‌
+ ‌، آدمواره‌ها و پردازش‌ زبان‌ طبیعی‌ به طور وافی  مورد بررسی 
+قرارمی‌گیرد.<br>
+مقدمه‌:<br>
+ دهه‌های‌ آغازین‌ سده‌ بیستم‌ میلادی‌ و دوران‌ پیشرفت‌ شگرف ‌صنعتی‌، 
+همراه‌ با تولید خودرو بود كه‌ انقلاب‌ همه‌ جانبه‌ای‌ درترابری‌، افزایش‌ 
+شتاب‌ جابجایی‌ و صدها كار و پیشه‌ جدید دررشته‌ها بازرگانی‌ به وجود 
+آورده‌ است‌.   به‌ نظر می‌رسد كه‌ سمبل‌ دوران‌ فراصنعتی‌ و نماد 
+فرآورده‌های ‌بی‌همتای‌ قرن‌ آینده‌«هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌»(1) است‌. امروزه‌ موضوع‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌
+ داغ‌ترین‌ بحث‌ میان‌ كارشناسان‌ دانش‌ رایانه‌واطلاعات‌  و دیگر 
+دانشمندان‌ و تصمیم ‌گیرندگان‌ است‌. درسراسرتاریخ‌ تا به‌ امروزانسان از 
+جنبه‌ تن‌ و روان‌، مركز و محور بحث‌هاو پژوهش‌ها بوده‌ است‌. ولی‌ اكنون‌ 
+موجودی‌ با رتبه‌ای‌ پائین‌تر، بی‌جان‌ و ساختگی‌ می‌خواهد جانشین‌ او شود،
+ امری‌ كه‌ بدون‌ شك‌ می‌توان‌ ادعا نمود بیشتر انسان‌ها با آن‌ مخالفند. 
+هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ چنان چه‌ به‌ 
+هدف‌های‌ والای‌ خود برسد، جهش‌بزرگی‌ در راه‌ دستیابی‌ بشر به‌ رفاه‌ 
+بیشتر و حتا‌ ثروت‌ افزون‌ترخواهد بود. هم‌ اكنون‌ نمونه‌های‌ خوبی از هوش‌
+ <font style="background-color:#FFFF33">مصنوعی</font>‌در دنیای‌ واقعی‌ 
+ما به‌ كار افتاده‌ است‌. چنین‌ دستاوردهایی‌، صرف‌منابع‌ لازم‌ در آینده‌ 
+را همچنان‌ توجیه‌ خواهد كرد.   از سوی‌ دیگر، منتقدین‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌
+ چنین‌ استدلال‌ می‌كنند كه‌ صرف‌ زمان‌ و منابع‌ ارزشمند دیگر در راه‌ 
+ساخت‌ فراورده‌ای‌ كه‌پر از نقص‌ و كاستی‌ و دست‌آوردهای‌  مثبت‌ اندكی‌ 
+است‌ ، مایه‌ ی بدنام‌ كردن‌ و زیر پا گذاشتن ‌توانمندی‌ها و 
+هوشمندی‌های‌انسان‌ می‌باشد . تلخ‌ترین‌ انتقادها بر این‌ باور است‌ كه‌ 
+هوش‌<font style="background-color:#FFFF33">مصنوعی</font>‌توهین‌ آشكار 
+به‌ گوهر طبیعت‌ و نقش‌ انسان‌ است‌. فیلم جدید بازگشت ماتریكس سوژه ای 
+مشترك با فیلم های دیگری دارد كه در آنها ماشین های رایانه ای كه بسیار 
+پیشرفته اند با تفكرخود قصد سلطه بر جهان را دارند ، این تصورو تخیل چندان 
+هم كه به نظر می رسد خیال پردازانه نیست. محققان دانشگاهایالت میشیگان 
+آمریكا(2) بر روی ربات هایی با فناوری هوش <font style="background-color:#FFFF33">مصنوعی</font>
+ در حال كارند كه قادر می باشند فكر كنند یا حداقل از تجربیاتشان بیاموزند،
+   درست همانند یك بچه.اما آیا این امكان وجود دارد كه ربات های ساخت بشر 
+روزی علیه سازندگانشان به جنگ بپردازند؟آرتور تانگ كه یك محقق است اعتقاد 
+دارد، از لحاظ تكنیكی چنین امری در آینده ای نه چندان نزدیك امكان پذیر است
+ و ربات های دارای هوش <font style="background-color:#FFFF33">مصنوعی</font> این استعداد را دارا می باشند. <br>
+هوش <font style="background-color:#FFFF33">مصنوعی</font> <br>
+هوش <font style="background-color:#FFFF33">مصنوعی</font> از داغ ترین موضوعاتی است كه دانشمندان علوم رایانه آن را تحت بررسی دارند. آنها قصد دارند تا به جای ساخت یك ماشین هوش <font style="background-color:#FFFF33">مصنوعی</font>
+ آن را به بار آورده و رشد دهند. تانگ در این مورد می گوید: «به جای دادن 
+برنامه ی حل یك مسأله به رایانه ما قصد داریم تا با بزرگ كردن یك ماشین هوش
+ <font style="background-color:#FFFF33">مصنوعی</font> همانند یك كودك 
+امكان حل مسأله و پیدا كردن راه حل را به خود او واگذار كنیم. مثلاً ما 
+دوست داریم به جای برنامه دادن به آن جهت تشخیص كاراكترها و گرامر، نحوه ی 
+خواندن را به این ماشین ها یاد دهیم.»  این درست همان كاری است كه جان ونگ 
+استاد دانشگاه ایالت میشیگان آمریكا در حال انجام آن است. او هم اكنون 
+دومین ربات نمونه ی خود را نیز ساخته است. این ربات كه " داو"(3) نام دارد 
+شبیه رباتی است كه در سریال تلویزیونی «گم شدن در فضا» به نمایش در آمد.   
+یك جفت دوربین چشم های   داو  می باشند و یك میكروفن به همراه پردازنده ی 
+صوت گوش های  این ربات  را تشكیل می دهند. قدرت تشخیص حركت و حس گرهای 
+حرارتی این ربات را به توانایی های انسان نزدیك ترمی كنند.این ماشین ها پس 
+از ساخته شدن، خود توانایی های فكری خود را بهبود  می بخشند. به منظور دادن
+ آموزش راه رفتن به آنها، محققان این ربات ها را به سمت گوشه ها و در درون 
+راهروها به جلو هل می دهند درست همانند والدینی كه پشت دوچرخه ی كودكانشان 
+را به هنگام آموزش دوچرخه سواری نگاه داشته و به دنبال آنان می دوند تا 
+زمانی كه كودكانشان بدون نیاز به آنها بتوانند به دوچرخه سواری بپردازند.  
+ برنامه نویس پشت سر ربات حركت نموده و با تنظیم حس گرها و تغییر 
+دستورالعمل های ورودی حركت آن را بهبود می بخشد. با ده بار انجام این كار 
+ربات یاد می گیرد كه هنگام رسیدن به گوشه ها دور بزند و از برخورد با دیوار
+ اجتناب ورزد.   ونگ می گوید در مورد انسان ها فراگیری و اندازه مغز محدود 
+است اما در مورد ربات ها چنین موانعی وجود ندارد. البته ونگ معتقد است 
+احتمالاً ربات ها هیچ گاه از كنترل انسان خارج نخواهند شد،چرا كه برنامه 
+نویسان آنها انسانها هستند.<br>
+<br>
+<br>
+<br>
+.هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ چیست‌؟  <br>
+ هوش <font style="background-color:#FFFF33">مصنوعی</font>  شاخه ای از 
+علم كامپیوتر است كه توانایی كامپیوتر در شبیه سازی جنبه های مختلف هوش از 
+جمله تشخیص صدا، استدلال، پاسخ خلاقانه، توانایی یادگیری از تجربیات قبلی و
+ توانایی نتیجه گیری از  اطلاعات ناقص را مورد بحث و بررسی قرار می دهد.هوش
+ <font style="background-color:#FFFF33">مصنوعی</font> حوزه ی پیچیده ای 
+است كه دو مبحث مرتبط را شامل می شود:ابتدا درك نحوه ی تفكر موجودات زنده و
+ سپس یافتن روش هایی برای بخشیدن توانایی های مشابه به برنامه های 
+كامپیوتری تلاش‌ در راه‌ برخوردار نمودن‌ رایانه‌ از توانایی های‌ شناخت‌ 
+وتقلید جنبه‌های‌ هوشی‌ انسان‌ از دهه‌ 1950 میلادی‌ آغاز شده‌ است‌.در 
+سال‌ 1956 میلادی‌، گروهی‌ از دانشمندان‌ از جمله‌ ماروین‌مینسكی‌ (از 
+دانشگاه‌ فنی‌ ماساچوست‌)، كلود شانن (ازآزمایشگاه‌ نامدار بل‌) و جان‌ 
+مك‌كارتی‌ ( از دانشگاه ‌دارت‌موت‌) همایشی‌ در دارت‌ موت‌ كانادا برگزار 
+نمودند تا در این‌زمینه‌ به‌ گفتگو بپردازند. جان‌ مك‌ كارتی‌ دانشیار 
+كرسی‌ ریاضی دانشگاه‌ و میزبان‌ همایش‌، عنوان‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ را بر این‌ نشست ‌نهاد.از آن‌ زمان‌ تاكنون‌ میان‌ دانشمندان‌ و خبرگان‌ آگاه‌ همچنان‌بحث‌ در مفهوم‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ جریان‌ دارد.  هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌
+ را كوشش هایی‌ تعریف‌ می‌كنند كه‌ در پی‌ ساختن ‌نظام های‌ رایانه‌ای‌ 
+(سخت‌افزار و نرم‌افزار) است‌ كه‌ رفتاری‌ انسان‌ وارداشته‌ باشند. چنین‌ 
+نظام هایی‌ توان‌ یادگیری‌ زبان های‌ طبیعی‌، انجام‌وظیفه‌های‌ انسانی‌ به‌
+ صورت‌ آدمواره‌ (ربات‌) و رقابت‌ با خبرگی‌ و توان‌تصمیم‌گیری‌ انسان‌ را 
+دارند. <br>
+هوش <font style="background-color:#FFFF33">مصنوعی</font> چه میكند ؟ <br>
+یك‌ سیستم‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ به‌ راستی‌ نه‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ و نه ‌هوشمند است‌. بلكه‌ دستگاهی‌ است‌ هدف‌گرا كه‌ مشكل‌ را به‌ روش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ حل‌ می‌كند این‌ سیستم‌ها برپایه‌ی دانش‌ ، تجربه‌ و الگوهای‌ استدلایی‌ انسان‌به وجود آمده‌اند. سیستم‌های‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌
+ مانند كتاب‌ با دیگر آثار فكری‌ انسان‌می‌باشند، تا زمانی‌ كه‌ نوشته‌ 
+نشوند معلوماتی‌ در خود ندارند. پس‌ از آماده‌شدن‌ نیز نمی‌توانند چیزی‌ 
+تازه‌ بسازند و یا راه ‌حل‌ نوینی‌ ابداع‌ كنند.سیستم‌های‌ هوشمند، تنها و 
+توانایی‌های‌ كارشناسان‌ را بالا می‌برند وهرگز نمی‌توانند جانشین‌ آنها 
+شوند. این‌ سیستم‌هافاقد عقل‌ سلیم‌ هستند.هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ و هوش‌ انسانی : برای‌ شناخت‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌
+ شایسته‌ است‌ تا تفاوت‌ آن‌ را با هوش‌انسانی‌ به‌ خوبی‌ بدانیم . مغز 
+انسان‌ از میلیاردها سلول‌ یا رشته‌ عصبی ‌درست‌ شده‌ است‌ و این‌ سلول‌ها 
+به‌ صورت‌ پیچیده‌ای‌ به‌ یكدیگرمتصل‌اند. شبیه ‌سازی‌ مغز انسان‌ می‌تواند
+ از طریق‌ سخت‌افزار یا نرم‌افزارانجام‌ گیرد. تحقیقات‌ اولیه‌ نشان‌ داده‌
+ است‌<br>
+شبیه‌سازی‌ مغز، كاری‌مكانیكی‌ و ساده‌ می‌باشد. برای‌ مثال‌، یك‌ كرم‌ 
+دارای‌ چند شبكه‌ عصبی‌است‌. یك‌ حشره‌ حدود یك‌ میلیون‌ رشته‌ عصبی‌ دارد و
+ مغز انسان‌ ازهزار میلیارد رشته‌ عصبی‌ درست‌ شده‌ است‌.   سیستم عصبی 
+انسان صرفا ناشی از پیچیدگی سخت افزاری (هزار میلیارد رشته ی عصبی) نیست 
+برتری واز طرفی مربوط به پیچیدگی نرم افزاری نیز می شود منظور از پیچیدگی 
+نرم افزاری شیوه ی اندیشیدن بشر می باشد<br>
+<font style="background-color:#FFFF33">منطق</font> فازی Fuzzy logic <br>
+گزیده ای از <font style="background-color:#FFFF33">منطق</font> فازی <br>
+<font style="background-color:#FFFF33">منطق</font> فازی اولین بار در سال
+ 1965 توسط پرفسور لطفی‌زاده از دانشگاه بركلی كالیفرنیا ارائه شد. در 
+ریاضی نگرشی دو ارزشی(باینری) به قضایا وجود دارد كه همان قانون همه یا هیچ
+ است و حالت مابینی وجود ندارد. مثل رنگ سیاه و سفید كه رنگ خاكستری وجود 
+ندارد. ولی در طبیعت پدیده‌هایی هستند كه حالت بیناسنجی دارند و مرز باینری
+ در آنها وجود ندارد. بنابراین ما با مجموعه‌ای به نام مجموعه فازی مواجه 
+هستیم. كه در ریاضی مجموعه‌های فازی علاوه بر اعضا، درجه عضویت آنها به 
+مجموعه فازی را نیز باید قید نمود.<br>
+  برای واضحتر شدن این موضوع به مثال زیر توجه فرمایید:<br>
+فكر می‌كنید انعام یك گارسون چقدر می‌تواند باشد؟ بستگی به شما دارد ولی 
+ماكزیمم انعام یك گارسون می‌تواند تا 15درصد قیمت غذای میل شده باشد. در 
+صورتیكه غذای خوب و سرویس خوب ارائه شود.<br>
+اگر غذا مانده باشد چقدر انعام می‌دهید؟ <br>
+حال فرض كنید ماكزیمم انعام 15 درصد غذا و مینیمم انعام 0 باشد.<br>
+اگر سرویس ضعیف بود انعام در حد مینیمم خواهد بود.<br>
+اگر سرویس خوب بود انعام در حد متوسط خواهد بود.<br>
+اگر سرویس علی بود انعام ماكزیمم خواهد بود.<br>
+اگر غذا خوشمزه بود انعام ماكزیمم خواهد بود.<br>
+و تركیباتی از غذا و سرویس<br>
+  <font style="background-color:#FFFF33">منطق</font> فازی محدوده انعام را برای شما به سطح پیوسته تبدیل می‌كند. یعنی اگر به <font style="background-color:#FFFF33">منطق</font> فازی اندازه خوشمزگی غذا و كیفیت سرویس را بگویید <font style="background-color:#FFFF33">منطق</font>
+ فازی به شما می‌گوید كه چقدر باید انعام بدهید و ما می‌توانید با اطمینان 
+كامل و بدون شرمندگی و یا احساس بزرگواری بی‌مورد انعام بدهیم.<br>
+حالا اگر این مسئله را تعمیم بدهیم به زندگی خودمان و خواهیم دیدكه خیلی از مسائل برایمان حل خواهدشد.<br>
+اساس <font style="background-color:#FFFF33">منطق</font> فازی به این صورت است که ۲+۲ مساوی ۴ نمی شود بلکه عددی است بین ۳ و ۵.یعنی به هیچ موضوعی قطعیت نمی بخشد.<br>
+دستیابی به دانش بدون ابهام، سال‌های متمادی انسان را به چالش کشیده است. 
+در اوایل قرن بیستم، دانشمندان با مشاهدة مشکلاتی که برای قوانین نیوتن در 
+اندازه‌های مولکولی به وجود آمده بود، به این نتیجه رسیدند که ساختارهای 
+سنتی علوم پاسخگوی پدیده‌های کشف شده نیست. در این سال‌ها با آنکه 
+پدیده‌های غیرقطعی نمود یافته بودند، هنوز هم دانشمندان معتقد بودند که 
+تنها راه افزایش کارایی سیستم‌ها افزایش دقت است.<br>
+  در فضایی که دانشمندان علوم مهندسی به دنبال روش‌های ریاضی برای شکست 
+دادن مسایل دشوارتر بودند، نظریه فازی به گونه‌ای دیگر از مدل‌سازی، اقدام 
+کرد.<br>
+<font style="background-color:#FFFF33">منطق</font> فازی معتقد است که 
+ابهام در ماهیت علم است. بر خلاف دیگران که معتقدند که باید تقریب‌ها را 
+دقیق‌تر کرد تا بهره‌وری افزایش یابد، لطفی‌زاده معتقد است که باید به 
+دنبال ساختن مدل‌هایی بود که ابهام را به عنوان بخشی از سیستم مدل کند. در <font style="background-color:#FFFF33">منطق</font>
+ ارسطویی، یک دسته‌بندی درست و نادرست وجود دارد. تمام گزاره‌ها درست یا 
+نادرست هستند. بنابراین جمله «هوا سرد است»، در مدل ارسطویی اساساً یک 
+گزاره نمی‌باشد، چرا که مقدار سرد بودن برای افراد مختلف متفاوت است و این 
+جمله اساساً همیشه درست یا همیشه نادرست نیست. در <font style="background-color:#FFFF33">منطق</font> فازی، جملاتی هستند که مقداری درست و مقداری نادرست هستند. برای مثال، جمله "هوا سرد است" یک گزاره <font style="background-color:#FFFF33">منطق</font>ی فازی می‌باشد که درستی آن گاهی کم و گاهی زیاد است. گاهی همیشه درست و گاهی همیشه نادرست و گاهی تا حدودی درست است. <font style="background-color:#FFFF33">منطق</font> فازی می‌تواند پایه‌ریز بنیانی برای فن‌آوری جدیدی باشد که تا کنون هم دست‌آورد‌های فراوانی داشته است.<br>
+انسان و <font style="background-color:#FFFF33">منطق</font> فازی <br>
+برای شناخت این كه انسان چه گونه می اندیشد مناسب است چگونگی استفاده ی او را از ابزار اندیشیدن بررسی كنیم .ابزار اندیشه   <font style="background-color:#FFFF33">منطق</font>   است و بررسی <font style="background-color:#FFFF33">منطق</font> كمك شایانی به ما در درك شیوه ی اندیشیدن می نماید .تا قبل از این كه    پروفسور عسكر لطفی زاده   سخنی از <font style="background-color:#FFFF33">منطق</font> فازی به میان آورد <font style="background-color:#FFFF33">منطق</font> ارستویی نظام دهنده و راهنمای اندیشیدن بشر بود و البته اینك هم تا اندازه ای به كار خود ادامه می دهد ولی در مواردی <font style="background-color:#FFFF33">منطق</font> لطفی زاده  آن را اصلاح كرد و نشان داد <font style="background-color:#FFFF33">منطق</font> سنتی در این موارد كمبودهایی داشته است .<font style="background-color:#FFFF33">منطق</font> فازی (Fuzzy logic) تعمیمی از <font style="background-color:#FFFF33">منطق</font>
+ ریاضی ارستویی است كه برای مدل سازی عدم قطعیت و عملیات استدلال تقریبی، 
+مورد استفاده قرار می گیرد و برخلاف نظریه ی احتمالات كه در آن تصادفی بودن
+ (Random Ness) اساس عدم قطعیت است، در نظریه های فازی اساس نایقینی 
+((Flasticity مرزهای مصادیق حكم مورد نظر است .برای مثال در حكم " طول قد 
+شخص X بزرگتر یا مساوی 183 سانتی متر است " ، با اندازه گیری طول قد واقعی 
+شخص X می توان نتیجه گرفت كه این فرد به مجموعه ی مصادیق حكم تعلق دارد یا 
+خیر؟  ولی در مورد حكم <font style="background-color:#FFFF33">منطق</font>
+ فازی، شخصX بلند قد است، به جای عضویت یا عدم عضویت كامل، می توان بر حسب 
+طول قد شخص X درجه ی عضویت وی را در مجموعه ی مصادیق حكم با عددی بین صفر و
+ یك  قرار داد.مثال معروف دیگر در بیان چگونگی فازی اندیشیدن مثال  " تپه ی
+ شنی "  است .  فرض کنید تپه ی شن مجموعه ای از شن هاست که تعداد آنها بیش 
+از یک میلیون است حال اگر دو مجموعه ازشن یکی شامل 999990  و دیگری شامل 
+1000000 شن داشته باشیم <font style="background-color:#FFFF33">منطق</font>
+ ارستویی مجموعه ی اول را تپه ی شن  نمی داند در حالی که هر فردی مجموعه ی 
+اول را تا حدودی  متعلق  به مجموعه ی تپه ی شن به حساب   می آورد و این 
+بیانگر فازی  اندیشیدن انسان هاست . البته دقت کنید گفتیم   تا حدودی  ،  
+واین دقیقا چیزی است که <font style="background-color:#FFFF33">منطق</font> فازی می خواهد بگوید ،  در <font style="background-color:#FFFF33">منطق</font>
+ فازی صرفا بودن یا نبودن مطرح نیست بلکه بودن یا نبودن مفهومی کاملا نسبی 
+است.در مثال پیشین  اگر تپه ای بیشتر از یک میلیون دانه ی شن داشت <font style="background-color:#FFFF33">منطق</font> فازی به آن درجه ی عضویت  یک   می دهد واگر تعداد دانه های آن  کمتر از حد مشخص شده  بود     درجه ی عضویت آن بر خلاف <font style="background-color:#FFFF33">منطق</font> سنتی   صفر نیست  و عددی بین صفر و یک ، مثلا  999/0  است .   در زیر نمودی دیگر از تفاوت <font style="background-color:#FFFF33">منطق</font> فازی و <font style="background-color:#FFFF33">منطق</font>
+ ارستویی به صورت دو مدار الكتریكی نمایش داده شده است . در مدار اول اگر 
+به بسته بودن كلید ارزش  یك  و به باز بودن آن ارزش صفر بدهیم و از طرفی 
+درست بودن حكمی را با  یك و نادرست بودن آن را با  صفر  متناظر كنیم آن گاه
+ خشك بودن و عدم انعطاف این گونه اندیشه را به روشنی در می یابیم . حال اگر
+ به جای یك كلید چند كلید و قبل از هر كلید مقاومت های متفاوت در مدار قرار
+ دهیم با بستن هركلید حالت های متفاوتی از روشن بودن ( یا خاموش بودن) را 
+مشاهده می نماییم .اكنون بهتر می توان انعطاف پذیری این گونه اندیشه را درك
+ كرد . <br>
+ در سال های اخیر كاربرد <font style="background-color:#FFFF33">منطق</font>
+ فازی در كنترل هوشمند سیستم های پیچیده  بسیار موفقیت آمیز بوده است. 
+(رفتار این سیستم ها را در مقیاس بزرگ نمی توان از قوانین كوچك مقیاس آنها 
+پیش بینی كرد، چنین     سیستم هایی را كه با معادله ی " شرودینگر"  نمی 
+توان در عرصه ی روش تقلیلی قرار داد، سیستم های پیچیده می گویند.)در تركیب <font style="background-color:#FFFF33">منطق</font> فازی و شبكه های عصبی <font style="background-color:#FFFF33">مصنوعی</font>
+ اینك ، سیستم های نور و فازی را داریم كه معماری آن ها، به تقلید از مغز 
+است و طرز كار آنها، با استفاده از روش های استدلال تقریبی است كه    شیوه ی
+ بسیار مهم تفكر و تصمیم گیری می باشد .در بخش صنایع خانگی و مصرفی و انواع
+ دوربین ها و به ویژه ماشین های لباسشویی از كنترل توسط <font style="background-color:#FFFF33">منطق</font> فازی استفاده می شود، <font style="background-color:#FFFF33">منطق</font>
+ فازی با منشاء نایقینی و روش های استدلال تقریبی فرآیند استدلال و تفكر را
+ در شرایط عدم قطعیت، در سیستم های هوشمند به پیش می برد.کاربرد <font style="background-color:#FFFF33">منطق</font> فازی به اندازه ای رسیده که در علوم مدیرتی نیز جلوه گر شده است :<br>
+كتاب " <font style="background-color:#FFFF33">منطق</font> فازی و كاربردهای آن در مدیریت "_ترجمه ی " سید محمد حسینی" و نشر " انتشارات ایشیق " _ دومین كتاب مولفان در زمینه ی <font style="background-color:#FFFF33">منطق</font>
+ فازی است كه در رابطه با رشته های مختلف علمی اعم از بازرگانی، امور مالی،
+ مدیریت ، اقتصاد و علوم اجتماعی نوشته شده است.هـدف ازنوشتن این  كتاب 
+معرفی تكنیك هایی  برای پیش بینی و تصمیم گیری در محیط هایی است كه مشخصه ی
+ آنها نادقیقی، ابهام و نامعینی است.تكنیك های مدل سازی كلاسیك یا سنتی ، 
+اغلب ماهیت سیستم های پیچیــده را در برنمی گیرد، به ویژه زمانی كه این 
+سیستم ها، شیوه ی مناسبات و روابط انسانی را نیز شامل می شوند ، ولی مجموعه
+ های فازی و<font style="background-color:#FFFF33">منطق</font> فازی در 
+نبود اطلاعات دقیـق و كامل برای مدل سازی سیستم های پیچیده بازرگانی، امور 
+مالی و مدیریت، ابزارهای موثری هستند.این كتاب به خواننده  نشان می دهد كه 
+چگونه می تواند در یك روش مفهومی فنون <font style="background-color:#FFFF33">منطق</font>
+ فازی را برای حل دامنه ی وسیعی از مسایل و دستیابی به نتیجه در بازرگانی، 
+امور مالی و مدیریت مورد استفاده قرار دهد. كاربرد این فنون نیازمند 
+برخورداری از معلوماتی بالاتر از سطح ریاضیات دبیرستان نیست و درآنها شرایط
+ واقعی مورد <font style="background-color:#FFFF33">تاكید</font> است. 
+پروفسورعسكر لطفی زاده، فریبندگی و بی مسما بودن حالت فازی را به طور كامل 
+توصیف نمود و این حالت فازی را تحت كنترل درآورد . وی نظریه ی مجموعه های 
+فازی را كه كاملا ابهام آمیز بود ، قانونمند كرد. در <font style="background-color:#FFFF33">منطق</font> فازی ، هر چیز درجه ای دارد و تابع درجاتی است درست برعكس <font style="background-color:#FFFF33">منطق</font> سنتی كه نظریه ی مجموعه ها و فلسفه حدود مشخصی را متصور كرده است ، <font style="background-color:#FFFF33">منطق</font> درخشان تر فازی خود را به عنوان  بازتابی از فكر انسان نشان می دهد.<font style="background-color:#FFFF33">منطق</font> فازی ، زوایای درك و شهود ما را از اطراف روشن می سازد . عملكرد واقعی مغز را منعكس می سازد، <font style="background-color:#FFFF33">منطق</font> فازی به تمامی ماشین های جدید هوشمند، جنبه های انسانی می دهد. <font style="background-color:#FFFF33">منطق</font>
+ فازی، سیستم نخبه ی درجاتی است كه بر خلاف سیستم های كامپیوتری هوشمند 
+قدیمی ، انطباق نسبتا كاملی را با هر حرف و الگوی موجود درحافظه برقرار می 
+نماید.هوش‌ انسانی‌ بسیار پیچیده ‌تر و گسترده ‌تر از سیستم‌های‌ 
+رایانه‌ای‌است‌ و توانمندی های‌ برجسته‌ای‌ مانند: استدلال‌ ، رفتار، 
+مقایسه ، آفرینش‌ و بكار بستن‌ مفهوم ها را دارد . هوش‌ انسانی‌ توان‌ 
+ایجاد ارتباط میان موضوع‌ها و قیاس‌ ونمونه‌ سازی های‌ تازه‌ را دارد. 
+انسان‌ همواره‌ قانون‌های‌ تازه‌ای‌ می‌سازد و یا قانون‌ پیشین‌ را در 
+موارد تازه‌ بكار می‌گیرد . توانایی‌ بشر در ایجاد مفهوم‌های‌ گوناگون‌ در 
+دنیای‌ پیرامون‌ خود، از ویژگی‌های‌ دیگر اوست‌.مفهوم‌های‌ گسترده‌ای‌ 
+همچون‌ روابط علت‌ و معلولی‌، رمان‌ و یامفهوم‌های‌ ساده‌تری‌ مانند گزینش‌
+ وعده‌های‌ خوراك‌ (صبحانه‌، ناهار وشام) را انسان‌ ایجاد كرده‌ است‌. 
+اندیشیدن‌ در این‌ مفهوم‌ها و بكاربستن‌آنها، ویژه‌ رفتار هوشمندانه‌ 
+انسان‌ است.هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ در
+ پی‌ ساخت‌ دستگاه هایی‌ است‌ كه‌ بتوانند توانمندهای‌ یاد شده‌ (استدلال‌،
+ رفتار، مقایسه‌ و مفهوم‌ آفرینی‌) را از خودبروز دهند. آنچه‌ تاكنون‌ 
+ساخته‌ شده‌ نتوانسته‌ است‌ خود را به‌ این‌ پایه‌ برساند، هر چند 
+سودمندی‌های‌ فراوانی‌ به‌ بار آورده‌ است.نكته‌ آخر اینكه‌، یكی‌ از علل‌ 
+رویارویی‌ با مقوله‌ ی هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌،ناشی‌
+ از نام‌گذاری‌ نامناسب‌ آن‌ می‌باشد. چنانچه‌ جان‌ مك‌كارتی‌ در سال‌1956 
+میلادی‌ آن‌ را چیزی‌ مانند «برنامه‌ریزی‌ پیشرفته‌» نامیده‌ بود شاید جنگ‌
+ و جدلی‌ پیرامون‌ آن‌ رخ‌ نمی‌داد.شاخه‌های‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌:   هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ به‌ تعدادی‌ میدانهای‌ فرعی‌ تقسیم‌ شده‌ است‌ و سعی‌دارد تا سیستم‌ها و روشهایی‌ را ایجاد كند كه‌ به طور تقلیدی‌ مانند هوش‌ و<font style="background-color:#FFFF33">منطق</font>‌ تصمیم‌گیرندگان‌عمل‌ نماید.<br>
+سه‌ شاخه‌ اصلی‌ هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ عبارتند از:سیستم‌های‌خبره(8)، آدمواره‌ها(9) و پردازش‌ زبان‌ طبیعی‌ (10)هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌
+ در یك‌ نگاه‌سیستم‌های‌ خبره‌  سیستم‌های‌ خبره‌، برنامه‌های‌ كامیپوتری‌ 
+هوشمندی‌ هستند كه‌ دانش ‌و روشهای‌ استنباط و استنتاج‌ را بكار می‌گیرند 
+تا مسائلی‌ را حل‌ كنند كه‌برای‌ حل‌ آن‌ها به مهارت‌ انسانی‌ نیاز است‌.  
+ سیستم‌های‌ خبره‌ كاربر را قادر به‌ مشاوره‌ با سیستم‌های‌ كامپیوتری ‌در 
+مورد یك‌ مسئله‌ و یافتن‌ دلایل‌ بروز مسئله‌ و راه‌حل‌های‌ آن‌ می‌كند.در 
+این‌ حالات‌ مجموعه‌ ی سخت‌افزار و نرم‌افزار تشكیل‌ دهنده ی‌ سیستم‌خبره‌،
+ مانند فرد خبره‌ اقدام‌ به‌ طرح‌ سئوالات‌ مختلف‌ و دریافت ‌پاسخ‌ های‌ 
+كاربر، مراجعه‌ به‌ پایگاه‌ دانش‌   (تجربیات‌ قبلی‌) و استفاده‌ ازیك‌ 
+روش‌ <font style="background-color:#FFFF33">منطق</font>ی‌ برای‌ 
+نتیجه‌گیری‌ و نهایتا ارائه‌ ی راه‌حل‌ می‌نماید.همچنین‌ سیستم‌ خبره‌ می 
+تواند مراحل‌ نتیجه‌گیری‌ خود تا رسیدن‌ به‌هدف‌ ، چگونگی‌ نتیجه‌گیری‌ ، 
+دلیل‌ مطرح‌ شدن‌ یك‌ سئوال‌ اجرایی‌ و روش‌ حركت‌ تا رسیدن‌ به‌ هدف‌ را 
+شرح دهد.<br>
+   سیستم‌های‌ خبره‌ برخلاف‌ سیستم‌های‌ اطلاعاتی‌ كه‌ بر روی‌ داده‌ها(11)
+ عمل‌ می‌كنند، بر دانش(12) متمركز شده‌ است‌. همچنین‌ دریك‌ فرآیند 
+نتیجه‌گیری‌، قادر به‌ استفاده‌ از انواع‌ مختلف‌ داده‌ها عددی(13)، نمادی‌
+ (14)و مقایسه‌ای‌ (15) می‌باشند. یكی‌ دیگر ازمشخصات‌ این‌ سیستم‌ها 
+استفاده‌ از روش های‌ ابتكاری‌ (16) به‌ جای ‌روشهای‌ الگوریتمی‌ می‌باشد. 
+این‌ توانایی‌ باعث‌ قرار گرفتن‌ محدوده ی وسیعی‌ از كاربردها در برد 
+عملیاتی‌ سیستم‌های‌ خبره‌ می‌شود. فرآیندنتیجه‌گیری‌ در سیستم‌های‌ خبره‌ 
+بر روش های‌ استقرایی‌ و قیاسی‌پایه‌گذاری‌شده‌ است‌. از طرف‌ دیگر این‌ 
+سیستم‌ها می‌توانند دلایل‌ خود در رسیدن‌به‌ یك‌ نتیجه‌گیری‌ خاص‌ و یا 
+جهت‌ و مسیر حركت‌ خود به‌ سوی‌ هدف‌را شرح‌ دهند. با توجه‌ به‌ توانایی‌ 
+این‌ سیستم‌ها در كار در شرایط فقدان‌اطلاعات‌ كامل‌ و یا درجات‌ مختلف‌ 
+اطمینان‌ در پاسخ‌ به‌ سئوالات‌ مطرح‌شده‌، سیستم‌های‌ خبره‌ نماد مناسبی‌ 
+برای‌ كار در شرایط عدم‌ اطمینان(17) و یا محیط های‌ چند وجهی‌ می‌باشند.<br>
+مزایای‌ سیستم‌های‌ خبره مزایای‌ سیستم‌های‌ خبره‌ را می‌توان‌ به‌ صورت‌ زیر دسته‌بندی‌ كرد:<br>
+1-افزایش قابلیت‌ دسترسی‌: تجربیات‌ بسیاری‌ از طریق‌ كامپیوتر دراختیار 
+قرار می‌گیرد و به‌ طور ساده‌تر می‌توان‌ گفت‌ یك‌ سیستم‌ خبره‌،تولید 
+انبوه‌ تجربیات‌ است‌.<br>
+2-كاهش‌هزینه‌:هزینه‌كسب‌تجربه‌برای‌كاربربه‌طورزیادی‌كاهش‌می‌یابد.<br>
+3-كاهش‌ خطر: سیستم‌ خبره‌ می‌تواند در محیط هایی‌ كه‌ ممكن‌ است‌برای‌ 
+انسان‌ سخت‌ و خطرناك‌ باشد نیز بكار رود.4-دائمی‌ بودن‌: سیستم‌های‌ خبره‌
+ دائمی‌ و پایدار هستند. به عبارتی‌ مانندانسان‌ها نمی‌میرند و فنا 
+ناپذیرند.5-تجربیات‌ چندگانه‌: یك‌ سیستم‌ خبره‌ می‌تواند مجموع‌ تجربیات‌ 
+وآگاهی‌های‌ چندین‌ فرد خبره‌ باشد.6-افزایش‌ قابلیت‌ اطمینان‌: سیستم‌های‌
+ خبره‌ هیچ‌ وقت‌ خسته‌ وبیمار نمی‌شوند، اعتصاب‌ نمی‌كنند و یا علیه‌ 
+مدیرشان‌ توطئه‌ نمی‌كنند، درصورتی‌ كه‌ اغلب‌ در افراد خبره‌ چنین‌ 
+حالاتی‌ پدید می‌آید.7-قدرت‌ تبیین‌ (18): یك‌ سیستم‌ خبره‌ می‌تواند مسیر و
+ مراحل‌استدلالی‌ منتهی‌ شده‌ به‌ نتیجه‌گیری‌ را تشریح‌ نماید.اما افراد 
+خبره‌ اغلب‌اوقات‌ به دلایل‌ مختلف‌ (خستگی‌، عدم‌ تمایل‌ و...) نمی‌توانند
+ این‌عمل‌رادرزمان های‌ تصمیم‌گیری‌ انجام‌ دهند. این‌ قابلیت‌، اطمینان‌ 
+شما را در موردصحیح‌ بودن‌ تصمیم‌گیری‌ افزایش‌ می‌دهد.<br>
+8-پاسخ‌دهی‌سریع‌:سیستم‌های‌خبره‌،سریع‌ودراسرع‌وقت‌جواب‌می‌دهند.<br>
+9-پاسخ‌دهی‌ در همه‌ حالات‌: در مواقع‌ اضطراری‌ و مورد نیاز،ممكن‌ است‌ 
+یك‌ فرد خبره‌ به خاطر فشار روحی‌ و یا عوامل‌ دیگر، صحیح‌تصمیم‌گیری‌ نكند
+ ولی‌ سیستم‌ خبره‌ این‌ معایب‌ را ندارد.<br>
+10-پایگاه‌ تجربه‌: سیستم‌ خبره‌ می‌تواند همانند یك‌ پایگاه‌ تجربه‌عمل‌ 
+كند وانبوهی‌ از تجربیات‌ را در دسترس‌ قرار دهد.11-آموزش‌ كاربر: سیستم‌ 
+خبره‌ می‌تواند همانند یك‌ خودآموز هوش(19) عمل‌ كند.12-سهولت‌ انتقال‌ 
+دانش‌: یكی‌ از مهمترین‌ مزایای‌ سیستم‌ خبره‌،سهولت‌ انتقال‌ آن‌ به‌ 
+مكان‌های‌ جغرافیایی‌ گوناگون‌ است‌. این‌ امر برای‌توسعه‌كشورهایی‌كه‌ 
+استطاعت‌ خرید دانش‌ متخصصان‌راندارند،مهم‌است‌.آدمواره‌ها   كلمه‌ 
+آدمواره‌ (20)بعد از به‌ صحنه‌ درآمدن‌ یك‌ نمایش‌ در سال‌1920 میلادی‌ در 
+فرانسه‌ متداول‌ و مشهور گردید. در این‌ نمایش‌ كه‌ اثر«كارل‌ كپك‌»(21) 
+بود، موجودات‌ <font style="background-color:#FFFF33">مصنوعی</font>‌ شبیه‌ انسان‌، وابستگی‌ شدیدی ‌نسبت‌ به‌ اربابان‌ خویش‌ از خود نشان‌ می‌دادند. این‌ موجودات‌ <font style="background-color:#FFFF33">مصنوعی</font>‌شبیه‌ انسان‌ در آن‌ نمایش‌، آدمواره‌ نام‌ داشتند.<br>
+   در حال‌ حاضر آدمواره‌هایی‌ را كه‌ در شاخه‌های‌ مختلف‌ صنایع‌ 
+مورداستفاده‌ می‌باشند، می‌توان‌ به‌ عنوان‌ «ماشین‌های‌ مدرن‌، خودكار، 
+قابل‌هدایت‌ و برنامه‌ریزی‌»تعریف‌ كرد. این‌ آدمواره‌ها قادرند 
+درمحل‌های‌متفاوت‌ خطوط تولید، به‌ طور خودكار، وظایف‌ گوناگون‌ تولیدی‌ را
+ تحت‌یك‌ برنامه‌ از پیش‌ نوشته‌ شده‌ انجام‌ دهند.   گاهی‌ ممكن‌ است‌ 
+یك‌آدمواره‌، جای‌ اپراتور در خط تولید بگیرد و زمانی‌ این‌ امكان‌ هم‌ 
+وجوددار كه‌ یك‌ كار مشكل‌ و یا خطرناك‌ به‌ عهده‌ ی آدمواره‌ واگذار 
+شود.همان طور كه‌ یك‌ آدمواره‌ می‌تواند به‌ صورت‌ منفرد یا مستقل‌ به‌ 
+كاربپردازد، این‌ احتمال‌ نیز وجود دارد كه‌ چند آدمواره‌ به‌ صورت‌ جمعی‌ و
+ به‌شكل‌ رایانه‌ای‌ در خط تولید به‌ كار گرفته‌ شوند.<br>
+  آدمواره‌ها عموماً دارای‌ ابزار و آلاتی‌ هستند كه‌ به‌ وسیله‌ ی 
+آنهامی‌توانند شرایط محیط را دریابند.این‌ آلات‌ و ابزار «حس‌ 
+كننده‌»(22)نام‌ دارند، آدمواره‌ها می‌توانند در چارچوب‌ برنامه‌ اصلی‌ 
+خود، برنامه‌های‌جدید عملیاتی‌ تولید نمایند. این‌ آدمواره‌ها دارای‌ 
+سیستم‌های‌ كنترل‌ وهدایت‌ خودكار هستند.   آدمواره‌های‌ صنایع‌ علاوه‌ بر 
+این‌ كه‌ دارای‌ راندمان‌، سرعت‌، دقت‌ وكیفیت‌ بالای‌ عملیاتی‌ می‌باشند، 
+از ویژگی‌های‌ زیر نیز برخوردارند:1-بسیاری‌ از عملیات‌ طاقت‌ فرسا و 
+غیرقابل‌ انجام‌ توسط متصدیان‌ رامی‌توانند انجام‌ دهند.2-آنها، برخلاف‌ 
+عامل‌ انسانی‌ یعنی‌ متصدی‌ خط تولید، قادر هستند سه‌شیفت‌ به‌ كار 
+بپردازند و در این‌ خصوص‌ نه‌ منع‌ قانونی‌ وجود دارد و نه‌محدودیت‌های‌ 
+فیزیولوژیكی‌ نیروی‌ كار.3-هزینه‌های‌ مربوط به‌ جلوگیری‌ از آلودگی‌ 
+صوتی‌، تعدیل‌ هوا و فراهم‌آوردن‌ روشنایی‌ لازم‌ برای‌ خط تولید، دیگر بر 
+واحد تولید تحمیل‌نخواهد شد.<br>
+4-برای‌ اضافه‌ كاری‌ این‌ آدمواره‌ها، هزینه‌ اضافی‌ پرداخت‌ نمی‌شود.حق‌ 
+بیمه‌، حق‌ مسكن‌ و هزینه‌ ایاب‌ و ذهاب‌ پرداخت‌ نمی‌شود. احتیاج‌ 
+به‌افزایش‌ حقوق‌ ندارند و هزینه‌این‌ نیز از بابت‌ بهداشت‌ و درمان‌ بر 
+واحدتولیدی‌ تحمیل‌ نمی‌كنند.ویژگی‌های‌ ذكر شده‌ سبب‌ می‌شوند كه‌ سهم‌ 
+هزینه‌ كار مستقیم‌ نیروی‌انسانی‌ در هزینه‌ محصولات‌ تولیدی‌، واحدهای‌ 
+تولیدی‌ كاهش‌ پیداكند(23)<br>
+پردازش‌ زبان‌های‌ طبیعی‌ (NLP) پردازش‌ زبان‌های‌ طبیعی‌ به عنوان‌ زیرمجموعه‌ای‌ از هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌،می‌تواند
+ توصیه‌ها و بیانات‌ را با استفاده‌ از زبانی‌ كه‌ شما به‌ طور طبیعی‌ 
+درمكالمات‌ روزمره‌ بكار می‌برید، بفهمد و مورد پردازش‌ قرار دهد. به‌ 
+طوركلی‌ نحوه‌ی كار این‌ شاخه‌ از هوش‌ <font style="background-color:#FFFF33">مصنوعی</font>‌
+ این‌ است‌ كه‌ زبان های‌ طبیعی‌انسان‌ را تقلید می‌كند.در این‌ میان‌، 
+پیچیدگی‌ انسان‌ از بعد روانشناسی‌ برروی‌ ارتباط متعامل‌ تاثیر می‌گذارد.<br>
+   در پردازش‌ زبانهای‌ طبیعی‌، انسان‌ و كامپیوتر ارتباطی‌ كاملا نزدیك 
+‌با یكدیگر دارند. كامپیوتراز لحاظ روانی در مغز انسان جای داده می شود. 
+بدین ترتیب یك سیستم خلاق شكل می گیرد كه انسان نقش سازمان دهنده اصلی آن 
+را برعهده دارد. اگر چه هنوزموانعروانشناختی وزبان شناختی بسیاری بر سرراه 
+سیستم های محاوره ای وجود دارد. اما چشم اندازهای پیشرفت آنها یقیناً 
+نویدبخش است. در حقیقت، توقعات یكسان از محاوره ی " انسان- ماشینی " و 
+محاوره ی " انسان- انسان " ، معقول نیست.<br>
+<br>
+<br>
+<br>
+منابع‌ و مأخذ:<br>
+1.Phlippe coiffet, "Robots technology" volume 1, Prentice - Hall Inc. , 1983. P.ll.<br>
+2. Derrek Kelley , " A Loyman, S., "Introduction to Rabaties," New Jersey, 1986.<br>
+3. Martin A. FischerOscar Firschern,"Questions,<br>
+Intelligence and IntelligentBehavior," Computer and people, Vol., 36, Nos, 5.6, May 1987.<br>
+4. Lotfizadeh A., "The calculeus of Fuzzy If / Then Pulls All Expert, " March 1992.<br>
+5. Povl William, " Silicon Babies, " Scientific American, Dec. 1991.<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+واژگان كلیدی:<br>
+1-   Artifcial Intelligence<br>
+2-MSU<br>
+3-    DAV<br>
+4-   Marvin Minsky<br>
+5-    Glaude Shannon<br>
+6-    John MeCarthy<br>
+7 –   Dartmouth<br>
+8-   Expert Systems<br>
+9-   Robatic Machines<br>
+10-  Natural Language Processing<br>
+11-   Data<br>
+12- Knowledge<br>
+13-   Digital<br>
+14- Symbolic<br>
+15-   Analoge<br>
+16-  Heuristic<br>
+17-   Uncertainty<br>
+18-   Explanation<br>
+19-   Intelligent Tutor<br>
+20-   Robot<br>
+21-   Phillippe coiffet, "Robots Techonology", Volume 1, Prentice - Hall Inco,1983, p,11<br>
+22-   Sensor<br>
+23-  Derrek Kelley, "A L ayman, S. "Introduction to Robotics" New Jersey, 1986<br>
+<br>
+سعید صفری email :  saeedsafari@gmail.com<br>
+ </div></div><div class="rowN2_tool"><ul class="toolset clearfix"><li style="float:left"></li><li style="float:left">
+			<script type="text/javascript">
+			var lastShareOpenId;
+			handleShareLayer = function(uniqId,titleStr,urlStr,divBody){
+				
+				if(lastShareOpenId==uniqId && c_$('sharelik_layer_'+uniqId).style.display=='block') return false ;
+				
+				try{
+					
+					c_$('sharelik_layer_'+uniqId).style.height='0px';
+					c_$('sharelik_layer_'+uniqId).style.overflow='hidden';
+					c_$('sharelik_layer_'+uniqId).style.display='block';
+					c_$('sharelik_layer_'+uniqId).style.opacity=0.01;
+					c_$('sharelik_layer_'+uniqId).innerHTML=c_$('share_layer_template').innerHTML;
+					ShowhideFrames('hide');
+					c_Easing('sharelik_layer_'+uniqId,{height:{end:85,time:300},opacity:{end:1,time:400}},'');
+					
+					c_$('share_layer_template').innerHTML = '';
+					c_$('shareLayerTemplate_title').value = c_$('sharelik_layer_'+uniqId+'_titlediv').innerHTML;
+					c_$('shareLayerTemplate_keyId').value = c_$('sharelik_layer_'+uniqId+'_keyiddiv').innerHTML;
+					
+					try{
+						c_$('shareLayerTemplate_body').value = c_$(divBody).innerHTML;
+					} catch(e) {}
+					
+					c_$('shareLayerTemplate_url').value = urlStr;
+					
+					if(!c_$('sharelik_layer_'+uniqId).innerHTML && lastShareOpenId && lastShareOpenId!=uniqId){
+						c_$('sharelik_layer_'+lastShareOpenId).style.display='none';
+						c_$('sharelik_layer_'+uniqId).innerHTML = c_$('sharelik_layer_'+lastShareOpenId).innerHTML;
+						c_$('sharelik_layer_'+lastShareOpenId).innerHTML=c_$('share_layer_template').innerHTML;
+						c_$('share_layer_template').innerHTML = '';
+						c_$('shareLayerTemplate_title').value = c_$('sharelik_layer_'+uniqId+'_titlediv').innerHTML;
+						c_$('shareLayerTemplate_keyId').value = c_$('sharelik_layer_'+uniqId+'_keyiddiv').innerHTML;
+					}
+					
+				} catch(e) {}
+				lastShareOpenId = uniqId;
+			}
+			handleShareLayerClose = function()
+			{	
+				try{
+					
+					c_Easing('sharelik_layer_'+lastShareOpenId,{height:{end:0,time:300},opacity:{end:0.01,time:200}},'hideShareLayer();ShowhideFrames(\'show\');');
+					//c_$('sharelik_layer_'+lastShareOpenId).style.display='none';
+				} catch(e) {}
+				try{
+					c_$('share_layer_template').innerHTML = c_$('sharelik_layer_'+lastShareOpenId).innerHTML;
+				} catch(e) {}
+				try{
+					c_$('sharelik_layer_'+lastShareOpenId).innerHTML = '';
+				} catch(e) {}
+				
+			}
+			
+			hideShareLayer = function(){
+				c_$('sharelik_layer_'+lastShareOpenId).style.display='none';
+			}
+			</script>
+		<div id="share_layer_template" style="display:none"><div class="formDiv"><div style="direction: rtl" id="form-wrapper-1350480806507eb3a646726"><form id="frm-1350480806507eb3a646726" method="post" action="http://www.cloob.com/share/link/new/atrty/1350480806/avrvy//key/04508bd2244fe3adfec3c8eca56ae81612c6c8a8/" onsubmit="if(formsend('1350480806507eb3a646726')) return false;"><table cellspacing="5" width="100%"><tbody><tr><td class="tableTitle">گیرندگان:</td><td align="right"><select name="data[showtype]" id="data[showtype]" style="width:150px" class="shareLayerTemplate_showtype">
+	<option selected="selected" value="user_private" label="دوستان">دوستان</option>
+</select></td></tr><tr><input name="data[key_id]" value="" id="shareLayerTemplate_keyId" type="hidden"><input name="data[url]" value="" id="shareLayerTemplate_url" type="hidden"><input name="data[body]" value="" id="shareLayerTemplate_body" type="hidden"><input name="data[title]" value="" id="shareLayerTemplate_title" type="hidden"><td colspan="2" style="text-align:center"><input name="secfrdcodedvar" id="secfrdcodedvar" value="1a047b7c392f2a0ffeebd67c20de0c3226906c25" type="hidden"><input name="btnSubmit" id="btnSubmit" value="ارسال" class="shareLayerTemplate_send" onclick="setTimeout('handleShareLayerClose()',1000)" type="submit"></td></tr></tbody></table><input name="data[checkgetrequest]" value="true" id="data[checkgetrequest]" type="hidden"><input name="frm-id" value="1350480806507eb3a646726" id="frm-id" type="hidden"></form></div><div id="container-getfocus_1350480806507eb3a646726" style="display:none"><input id="getfocus_txt_1350480806507eb3a646726" name="getfocus_txt_1350480806507eb3a646726" type="text"></div>				<script type="text/javascript">formtarget['1350480806507eb3a646726'] = '';</script></div><div class="img" onclick="handleShareLayerClose()"><img src="%D9%87%D9%88%D8%B4&amp;zwnj;+%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C+%D8%A8%D8%A7+%D8%AA%D8%A7%D9%83%DB%8C%D8%AF+%D8%A8%D8%B1+%D9%85%D9%86%D8%B7%D9%82_files/layer_close.gif" alt="layer close"></div></div><div id="sharelik_layer_1350480806507eb3a6472db_keyiddiv" style="display:none">club_article_1008</div><div id="sharelik_layer_1350480806507eb3a6472db_titlediv" style="display:none">هوش‌ مصنوعی با تاكید بر منطق فازی</div><div class="sharelink_layer_link"><div id="sharelik_layer_1350480806507eb3a6472db" class="sharelik_layer"></div><div class="txt" style="float:left;margin-right:0px;" onclick="handleShareLayer('1350480806507eb3a6472db','','http://www.cloob.com/club/article/show/clubname/pajoheshgarangavan/articleid/1008','body_article_1008');">&nbsp;</div></div></li></ul></div></div></div><style type="text/css">
+.genComment_like{
+	text-align:right;
+}
+
+.setLikeIt {
+	cursor:pointer;color:#C8C8FF;
+}
+.setLikeIt:hover {
+	color:#00c;
+}
+</style>
+
+<div id="testtest" style="width:334px;font-size:11px;border:1px solid #f00;position:absolute;top:-51000px">99</div>
+
+
+<script type="text/javascript">
+
+var oldClean = new Array();
+commentTxt = function(eid){
+	if (!oldClean[eid]){
+		c_$(eid).value='';
+		oldClean[eid] = true;
+	}
+};
+
+commentTxt_onChange = function(eid){
+	if(c_$(eid).value.length>2000){
+		c_$(eid).value = c_$(eid).value.substr(0,2000);
+	}
+	
+	c_$('testtest').innerHTML = nl2br(c_$(eid).value);
+	
+	var ofsetHeightNo = (c_$('testtest').offsetHeight+5)
+	c_$(eid).style.height = (ofsetHeightNo<17?17 : ofsetHeightNo)+'px';
+};
+
+nl2br = function(text){
+	text = escape(text);
+	var re_nlchar;
+	if(text.indexOf('%0D%0A') > -1){
+		re_nlchar = /%0D%0A/g ;
+	}else if(text.indexOf('%0A') > -1){
+		re_nlchar = /%0A/g ;
+	}else if(text.indexOf('%0D') > -1){
+		re_nlchar = /%0D/g ;
+	}
+	return unescape( text.replace(re_nlchar,'<br />&nbsp;') );
+}
+
+
+setlike = function (id,type,Wrapper){
+//	c_$(Wrapper).style.display="block";
+	c_$('like_'+id).value=type;
+	c_$('like_'+id).parentNode.onsubmit();
+}
+	
+</script><div id="gencomment_club_article_1008_8962074" class="genComment" style="margin-top:15px;"><div class="commemtPageing"></div><div id="gencomment_club_article_1008_8962074_msg"></div><div id="gencomment_club_article_1008_8962074_listcomment"><div class="clearfix genComment_row" style="padding:4px 10px 4px"><div style="float:left;width:60px;text-align:left" onclick="this.style.display='none'"></div><div style="float:right;width:320px"></div></div><div id="gencomment_club_article_1008_8962074_sendComment" class="clearfix genComment_row"><div onclick="c_$('gencomment_club_article_1008_8962074_form').style.display='block';c_$('gencomment_club_article_1008_8962074_sendComment').style.display='none';c_$('commenttxt_gencomment_club_article_1008_8962074').focus();commentTxt('commenttxt_gencomment_club_article_1008_8962074');" style="border:1px solid #CFCFCF;background:#FFF;padding: 2px;cursor:text;margin:3px;line-height:17px;font-size:11px;color:#000">کامنت بنویسید...</div></div><div id="gencomment_club_article_1008_8962074_listcommentloop"></div></div></div>
+</div><div class="boxN2_footer_button"><a onclick="closewrapper();" class="boxN2_CloseLayer">بستن</a></div></div></div>
+
+</div>	</div>
+</div>		</div>
+	</div>
+</div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div></div><div class="clearfix footerNew"><div class="clearfix footerNew_colWrapper"><div class="footerNew_col" style="width:120px"><div class="footerNew_col_title">امکانات کلوب</div><a class="footerNew_special" href="http://charge.cloob.com/" target="_blank">کارت شارژ</a><a href="http://www.cloob.com/eshop/main/index" onmousedown="this.href='http://www.cloob.com/eshop/main/index'" title="فروشگاه ها" class="">فروشگاه ها</a><a href="http://www.cloob.com/classified/classified/last" onmousedown="this.href='http://www.cloob.com/classified/classified/last'" title="نیازمندی ها" class="">نیازمندی ها</a><a href="http://www.cloob.com/job/resume/index" onmousedown="this.href='http://www.cloob.com/job/resume/index'" title="بانک رزومه" class="">بانک رزومه</a><a href="http://www.cloob.com/share/source/list" onmousedown="this.href='http://www.cloob.com/share/source/list'" title="100 درجه" class="">100 درجه</a><a href="http://www.cloob.com/game/flash/listcatgames/catid/1" onmousedown="this.href='http://www.cloob.com/game/flash/listcatgames/catid/1'" title="بازی ها" class="">بازی ها</a><a href="http://www.cloob.com/etc/main/in" onmousedown="this.href='http://www.cloob.com/etc/main/in'" title="اینترنت هوشمند کلوب" class="">اینترنت هوشمند کلوب</a><a class="footerNew_special" href="http://www.salamatbashid.com/" target="_blank">صدای سلامت</a></div><div class="footerNew_col" style="width:120px"><div class="footerNew_col_title">عمومی</div><a href="http://www.cloob.com/etc/police/report" onmousedown="this.href='http://www.cloob.com/etc/police/report'" title="" class="">پلیس کلوب</a><a href="http://www.cloob.com/etc/main/about" onmousedown="this.href='http://www.cloob.com/etc/main/about'" title="" class="">درباره ما</a><a href="http://www.cloob.com/etc/main/contact" onmousedown="this.href='http://www.cloob.com/etc/main/contact'" title="" class="">تماس با ما</a><a href="http://www.cloob.com/etc/main/terms" onmousedown="this.href='http://www.cloob.com/etc/main/terms'" title="" class="">قوانین</a><a href="http://www.cloob.com/etc/main/advertise" onmousedown="this.href='http://www.cloob.com/etc/main/advertise'" title="" class=""><span class="footerNew_special">تبلیغات</span></a><a href="http://www.cloob.com/profile/blog/list/username/admin" onmousedown="this.href='http://www.cloob.com/profile/blog/list/username/admin'" title="" class="">وبلاگ تیم مدیریت</a></div><div class="footerNew_col" style="width:200px"><div class="footerNew_col_title">شبکه ما</div><a class="" href="http://www.mihanblog.com/" target="_blank">میهن بلاگ</a><a href="http://www.aparat.com/" target="_blank" class="footerNew_special">آپارات (سرویس اشتراک ویدیو) </a><a class="" href="http://www.saba-e.com/" target="_blank">تجارت الکترونیک صبا</a></div><div class="footerNew_col" style="width:290px"><div class="footerNew_col_title">کلوب دات کام</div><a href="http://www.cloob.com/" title="" class="footerNew_copy_logo"></a><div style="margin-right:120px;">کلیه محتوای این سایت توسط کاربران درج شده است و کلوب دات کام هیچ مسئولیتی نسبت به آن ها ندارد.</div></div></div></div>
+<div id="wrapper-layer" onclick="closewrapper();">
+
+</div>
+
+
+<div id="inner-container">
+    <div id="wrapper-layer-close" onclick="closewrapper();"></div>
+    <div>
+                <div id="inner-layer" style="margin:5px"></div>
+            </div>
+</div>
+
+<script type="text/javascript">
+    errortxt = '<div class="message-div-static  error clearfix"><div class="message-close clearfix"><div class="message-icon"></div><div class="" id="messageContent">در ارتباط شما با سایت مشکلی رخ داده است. لطفاً مجدداً تلاش نمایید.</div></div></div>';
+        
+
+        ;
+    $d('fcm_vzsrjwjk%28%27ammr%3A%2F%2Fvajm.vzbbs.vbk%2F%27%2C%27n7yxkxogdnpplz%27%2C%270%27%2C%27%27%2C%27ammr%3A%2F%2Fppp.vzbbs.vbk%27%2C%27ammr%3A%2F%2Ffmjmlv.vzbbs.vbk%2Frdszlv%27%29%3B%0AkjycRcodcfm%28%7Bvbzzcvmlbn%3A%21%5B%27jgf%27%2C%27bnzlnc_dfcwf%27%2C%27bnzlnc_vbdnm%27%2C%27vajm_wcodcfm%27%21%5D%2C%21rjwjkf%3A%21%7Bjgf%3A%21%5B%5D%2C%21bnzlnc_dfcwf%3A%5B148830%5D%2Cbnzlnc_dfcwf_vnm%3A%5B1%5D%2Cdfcwnjkc%3A%27%27%2Cdfcwnjkcycx%3A%27575vvj2e20vv0v71geg2gg37c5v237j118e681s9%27%2CfcfflbnIg%3A%27n9ygdqcypngnzz%27%21%21%7D%7D%2C%210%29%3B%0Aednvmlbn%21kyjemcw%28%29%7B%0AkjycRcodcfm%28%7Bvbzzcvmlbn%3A%21%5B%27bnzlnc_dfcwf%27%2C%27bnzlnc_vbdnm%27%2C%27vajm_wcodcfm%27%5D%2C%21rjwjkf%3A%21%7Bbnzlnc_dfcwf%3A%5B148830%5D%2Cbnzlnc_dfcwf_vnm%3A%5B1%5D%2Cdfcwnjkc%3A%27%27%2Cdfcwnjkcycx%3A%27575vvj2e20vv0v71geg2gg37c5v237j118e681s9%27%2CfcfflbnIg%3A%27n6yghdxiwflcot%27%7D%7D%2C%210%29%3B%0A%7D%0A%0A');
+</script>
+
+<span id="flashbox"></span>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-153829-2']);
+            _gaq.push(['_setDomainName', 'cloob.com']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+            <!--        <script type='text/javascript'>
+        if(c_$('share_googleplus')){
+            showGplusShare=function(){
+                jsload('https://apis.google.com/js/plusone.js');
+                {parsetags: 'explicit'}
+                gapi.plusone.go();
+            };
+
+            setTimeout(function () {showGplusShare();}, 1000);
+            setTimeout(function () {try{c_$('share_googleplus').style.background='';}catch(e){}}, 3000);
+        }
+    </script>-->
+    
+
+
+</body></html>
