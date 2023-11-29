@@ -1,0 +1,517 @@
+﻿@font-face
+{
+	font-family: 'BYekan';
+	src: url('../../Fonts/BNazanin.eot?') format('eot'), url('../../Fonts/BNazanin.woff') format('woff'), url('../../Fonts/BNazanin.ttf') format('truetype');
+}
+.form
+{
+    font-family: Tahoma;
+	color: #333333;
+    font-size:11px;
+	border: 1px solid #ABABAB;
+	
+}
+ 
+.DifferentColumn
+{
+    font-family: Tahoma;
+    font-size:11px;
+    font-weight:bold;
+    color: #FF6600;
+}
+ 
+.Greeting
+{
+    margin: 0 0 0 0;
+}
+.GreetingName
+{
+    font-family: Tahoma;
+    font-size: 11px;
+    font-weight: bold;
+    color: #FFBB00;
+}
+.star
+{
+    font-family: Tahoma;
+	color: #FF0000;
+    font-size:13px;
+}
+.button
+{
+    font-family: Tahoma;
+	color: #000000;
+    font-size:11px;
+}
+BODY {
+ direction:ltr;
+font:11px tahoma;
+margin:0;
+padding:0;
+position:relative;
+width:100%;
+}
+table
+{
+	text-align:right;
+	margin-bottom: 0px;
+}
+ 
+ 
+Input
+{
+    font-family:Tahoma;
+    font-size:11px;
+}
+
+ 
+.Label
+{
+    font-family:Tahoma;
+    font-size:11px;
+    color:Black;
+}
+ 
+ 
+ 
+td 
+{
+   font-family:Tahoma;
+   font-size :11px;
+	color: #333333; 
+}
+ 
+
+.helpTable
+{
+	background:#F2F2F2;
+	border:3px double #666666;
+}
+.ab
+ {
+	text-align: justify;
+	line-height: 170%;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.history {
+	text-align: justify;
+	line-height: 120%;
+}
+.PubsName
+{
+    vertical-align: middle;
+    text-align: right;
+	font-family: Arial;
+ 	font-weight:bold;
+    font-size: 50px;
+    margin-left: 20px;
+	margin-right: 20px;
+	color:gray;
+}
+ .LoadingImage
+ {
+ 	position: absolute;visibility:visible;vertical-align:middle;border-style:none;background-color:transparent; width: 90px;
+ }
+ .imageHW
+ {
+ 	 Height:40px; Width:40px;
+ }
+ /* start varzesh3 */
+ .span1_v
+ {
+ 	width:130px; position:absolute;  height:240px;  
+ }
+   .span2_v
+ {
+ 	position:absolute;  width:130px; cursor:pointer; height:220px;   background-image: url('http://www.dabi.ir/images/BackFlashLink.gif'); background-repeat: no-repeat;
+  }
+  .PublicHW_v
+  {
+  	width: 125px; height:232px;
+  }
+   .PublicHW1_v
+  {
+  	width: 130px; height:232px;
+  }
+  .border_v
+  {
+  	 border :solid 2px #e5e5e5; width: 126px; height:236px;
+  }
+     .PublicHW11_v
+  {
+  	width:125px; height:232px; margin-top:-1px;
+  }
+  .DivOff_v
+{
+position:absolute;background-image: url('../../images/black_v.png');  background-repeat: no-repeat;padding-top:35px; 
+}
+/*.DivOff_v:hover 
+{
+position:absolute;background-image: url('../../images/black1_v.png');  background-repeat: no-repeat;padding-top:35px; 
+
+} */
+.panel1_v
+{
+	 Height:186px; Width:130px;  
+}
+.DivMaskan_v
+{
+position:absolute;background-image: url('../../images/maskan_v.png');  background-repeat: no-repeat;padding-top:35px; 
+}
+/*.DivMaskan_v:hover 
+{
+position:absolute;background-image: url('../../images/maskan1_v.png');  background-repeat: no-repeat;padding-top:35px; 
+}*/
+.DivSitesBack_v
+{
+position:absolute;background-image: url('../../images/AdsSites_v.jpg');  background-repeat: no-repeat;padding-top:105px; width:130px;
+}
+
+.DivShopBack_v
+{
+	position:absolute;background-image: url('../../images/shop_back_v.gif');  background-repeat: no-repeat;padding-top:47px; width:130px; 
+
+}
+/* end varzesh3 */
+ .span1
+ {
+ 	width:120px; position:absolute;  height:240px; 
+ }
+ .nextPre
+ {
+ 	Height:9px; Width:9px; 
+ }
+  .span2
+ {
+ 	position:absolute;  width:120px; cursor:pointer; height:220px;   background-image: url('http://www.dabi.ir/images/BackFlashLink.gif'); background-repeat: no-repeat;
+  }
+  .PublicHW
+  {
+  	width: 120px; height:232px;  
+  }
+   .PublicHW11
+  {
+  	width: 115px; height:232px; margin-top:-1px; 
+  }
+  .ImageLink 
+  {
+  	 
+ }
+
+.ImageLink:hover {
+	 border: 1px solid #FF0000
+}
+.ImageLink:visited 
+{
+	 
+  }
+ .ImageADS
+{
+	height:13px; border :0;
+ }
+ .TrNextPre
+ {
+ 	height:11px; background-color: #E5E5E5;
+ }
+ .a {
+	FONT-WEIGHT: normal; FONT-SIZE: 9px; COLOR: #dddddd; FONT-FAMILY: TimesNewRoman; TEXT-DECORATION: none
+}
+
+.a:hover {
+	FONT-WEIGHT: normal; FONT-SIZE: 9px; COLOR: #ff3300; FONT-FAMILY: TimesNewRoman; TEXT-DECORATION: none;
+}
+.a:visited 
+{
+	FONT-WEIGHT: normal; FONT-SIZE: 9px; COLOR: #000000; FONT-FAMILY: TimesNewRoman; TEXT-DECORATION: none
+}
+
+.footer {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Tahoma; TEXT-DECORATION: none
+}
+
+.footer:hover {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #ff3300; FONT-FAMILY: Tahoma; TEXT-DECORATION: none
+}
+.footer:visited 
+{
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Tahoma; TEXT-DECORATION: none
+}
+
+.footer_green {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY:Tahoma; TEXT-DECORATION: none; cursor :pointer ;
+}
+
+.footer_green:hover {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #ff3300; FONT-FAMILY:Tahoma; TEXT-DECORATION: none; cursor :pointer ;
+}
+.footer_green:visited 
+{
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY:Tahoma; TEXT-DECORATION: none; cursor :pointer ;
+}
+.linkBack{
+	background: url('../../images/black.png'); border :solid thin red;
+}
+/*.linkBack:hover {
+	background: url('../../images/black1.png');  border :solid thin #000000;
+}*/
+.linkBack:visited 
+{
+	background: url('../../images/black.png');  border :solid thin red; 
+}
+.HomeNews {
+	 COLOR: #0000CC; TEXT-DECORATION: none; font-weight:bold;
+}
+.HomeNews:link {
+	 COLOR: #0000CC; TEXT-DECORATION: none;font-weight:bold;
+}
+.HomeNews:hover {
+	 COLOR: #ff3300; TEXT-DECORATION: none;font-weight:bold;
+}
+.HomeNews:visited  {
+	 COLOR: #0000CC; TEXT-DECORATION: none;font-weight:bold;
+}
+
+.dots {
+		font-size: 11px;color: #ffa200; font-family: Tahoma; TEXT-DECORATION: none;
+}
+ .itemdetailws
+{
+    border: thin dotted #C0C0C0; 
+    overflow: scroll;
+    
+    Height:186px; Width:120px; direction:rtl;
+    
+}
+scrollbar[orient="vertical"] scrollbarbutton,
+scrollbar[orient="vertical"] slider{
+width: 1000px !important;
+}
+.span3
+{
+	cursor:default;
+}
+.DivOff
+{
+position:absolute;background-image: url('../../images/black.png');  background-repeat: no-repeat;padding-top:35px; 
+}
+/*.DivOff:hover 
+{
+position:absolute;background-image: url('../../images/black1.png');  background-repeat: no-repeat;padding-top:35px; 
+}*/
+.RedColor 
+{
+	color:red;
+}
+.whiteColor 
+{
+	color:#ffffff;
+}
+.panel1
+{
+	/* Height:186px;*/
+      height:178px;
+	  Width:120px;  
+}
+.panelBannerOff
+{
+	 Height:200px; Width:120px;  
+}
+.DivOff1
+{
+position:absolute;  padding-top:35px;  Height:200px; background-image: url('../../images/black.png');  background-repeat: no-repeat;
+}
+/*.DivOff1:hover 
+{
+position:absolute;  padding-top:35px;  Height:200px; background-image: url('../../images/black1.png');   background-repeat: no-repeat;
+}*/
+.DivOff2
+{
+margin-left:-2px; min-height :40px; 	
+ }
+.datalistOff
+{
+	border : solid 1px #729A43;
+}
+.width100
+{
+	width: 100%;
+}
+.height200
+{
+	height: 200px;  
+}
+.height185
+{
+	height: 189px;  
+}
+.tdOff
+{
+	 height :30px;background-image: url('../../images/Discount.png'); background-repeat: no-repeat;padding-top:5px; width :50px; font-family:Tahoma ; font-size:11px;  
+}
+.tdOff2
+{
+	width:50px; min-height:50px;
+}
+.DatalistAlternating
+{
+	 background-color:#FFF4D6;
+	  border: Solid 2px #EAEAEA; 
+                       
+}
+.DatalistItem
+{
+	 background-color:#ffffff;
+	  border: Solid 2px #EAEAEA; 
+                       
+}
+.DivMaskan
+{
+position:absolute;background-image: url('../../images/maskan.png');  background-repeat: no-repeat;padding-top:35px; 
+}
+/*.DivMaskan:hover 
+{
+position:absolute;background-image: url('../../images/maskan1.png');  background-repeat: no-repeat;padding-top:35px; 
+}*/
+.DivMaskan1
+{
+position:absolute;  padding-top:35px;  Height:200px; background-image: url('../../images/maskan.png');  background-repeat: no-repeat;
+}
+/*.DivMaskan1:hover 
+{
+position:absolute;  padding-top:35px;  Height:200px; background-image: url('../../images/maskan1.png');   background-repeat: no-repeat;
+}*/
+.tdMaskan
+{
+	 height :46px;background-image: url('../../images/MelkBack.png'); background-repeat: no-repeat;padding-top:18px; width :65px;padding-right:3px; 
+}
+.tdMaskan2
+{
+	width:50px; min-height:50px; padding-top:7px;
+}
+.DatalistAlternatingMaskan
+{
+	 background-color:#FAE2F4;
+	  border: Solid 2px #EAEAEA; 
+	  min-height  :16px;
+	vertical-align :middle;
+	padding-top:6px;
+                       
+}
+.padiingMaskan
+{
+    padding :10px 0px 7px 10px;
+}
+.lblCount  
+{   font-family: Tahoma;
+	font-size: 11px; 
+}
+
+ 
+.toggleopacity IMG.ss {
+	FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=50); opacity: 0.2
+}
+.toggleopacity:hover IMG.ss {
+	FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=100); opacity: 1
+}
+/*.toggleopacity IMG {
+	BORDER-RIGHT: red 1px solid; BORDER-TOP: red 1px solid; BORDER-LEFT: red 1px solid; BORDER-BOTTOM:red 1px solid
+}
+.toggleborder:hover IMG {
+	BORDER-TOP-WIDTH: 3px; BORDER-LEFT-WIDTH: 3px; BORDER-BOTTOM-WIDTH: 3px; BORDER-RIGHT-WIDTH: 3px 
+}*/
+.toggleopacity1 span.dd {
+	FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=50); opacity: 0.1
+}
+.toggleopacity1:hover span.dd{
+	FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=100); opacity: 1
+}
+.borderAll
+{
+	 border:solid 2px #E5E5E5;
+}
+.td2
+{
+	width:10px; height:13px 
+}
+.DivSite
+{
+	direction :rtl;
+	background :#ffffff;
+	min-height  :16px;
+	vertical-align :middle;
+	padding-top:6px;
+}
+.DivSite1
+{
+    background :#FAF4D5;
+	direction :rtl;
+	min-height  :16px;
+	vertical-align :middle;
+	padding-top:6px;
+}
+.DivSite2
+{
+  min-height :40px; 	
+ }
+.DivSitesBack
+{
+position:absolute;background-image: url('../../images/AdsSites.jpg');  background-repeat: no-repeat;padding-top:105px; width:120px; 
+}
+
+
+.panelSites
+{
+	 /*Height:180px; */
+	 Height:100px;
+	 Width:120px;  
+}
+.height180
+{
+	height: 121px;  
+}
+.dots {
+		font-size: 11px;color: #ffa200; font-family: Tahoma;
+}
+
+.DivShopBack
+{
+	position:absolute;background-image: url('../../images/shop_back.gif');  background-repeat: no-repeat;padding-top:47px; width:120px; 
+
+}
+.heightShop
+{
+	height: 178px;  
+}
+.DivShop1
+{
+    background :#E8E9EB;
+	direction :rtl;
+	min-height :16px;
+	vertical-align :middle;
+	padding-top:6px;
+}
+#scrollup {
+   position: relative;
+   overflow: hidden;
+    height: 178px;
+   width: 114px;
+ 
+ }
+ .headline {
+   position: absolute;
+   top: 250px;
+   
+   height: 160px;
+   width:114px;
+ }
+ .DivOffForShop
+{
+position:absolute;  padding-top:35px;  Height:250px; background-image: url('../../images/OffForShop.gif');  background-repeat: no-repeat;
+}
+.panelBannerOffForShop
+{
+	 Height:250px; Width:194px;  
+}
+
+

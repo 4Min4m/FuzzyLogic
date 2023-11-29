@@ -1,0 +1,11 @@
+var OA_output = new Array(); 
+OA_output['5'] = '';
+OA_output['5'] += "<"+"div id=\'ox_a31285ca999a9f27dcc2897361a7ca62\' style=\'display: inline;\'><"+"img src=\'http://ssads.net/openx/www/images/1x1.gif\' alt=\'\' title=\'\' border=\'0\' /><"+"/div>\n";
+OA_output['5'] += "<"+"script type=\'text/javascript\'><"+"!--// <"+"![CDATA[\n";
+OA_output['5'] += "var ox_swf = new FlashObject(\'http://ssads.net/openx/www/images/70699a23157aebf99dcff7e47a0877d0.swf\', \'Advertisement\', \'180\', \'240\', \'8\');\n";
+OA_output['5'] += "ox_swf.addVariable(\'alink1\', \'http%3A%2F%2Fssads.net%2Fopenx%2Fwww%2Fdelivery%2Fck.php%3Foaparams%3D2__bannerid%3D39__zoneid%3D5__cb%3D0e7a9b3656__oadest%3Dhttp%253A%252F%252Fwww.samservice.com\');\n";
+OA_output['5'] += "ox_swf.addVariable(\'atar1\', \'_blank\');\n";
+OA_output['5'] += "ox_swf.addParam(\'allowScriptAccess\',\'always\');\n";
+OA_output['5'] += "ox_swf.write(\'ox_a31285ca999a9f27dcc2897361a7ca62\');\n";
+OA_output['5'] += "if (ox_swf.installedVer.versionIsValid(ox_swf.getAttribute(\'version\'))) { document.write(\"<"+"div id=\'beacon_0e7a9b3656\' style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\'><"+"img src=\'http://ssads.net/openx/www/delivery/lg.php?bannerid=39&amp;campaignid=7&amp;zoneid=5&amp;loc=http%3A%2F%2Fwww.iranwebads.com%2Fshowads.php%3Fposid%3D13&amp;referer=http%3A%2F%2Fwww.cloob.com%2Fclub%2Farticle%2Fshow%2Fclubname%2Fpajoheshgarangavan%2Farticleid%2F1008%2Fsrch%2F%25D9%2587%25D9%2588%25D8%25B4%2526zwnj%253B+%25D9%2585%25D8%25B5%25D9%2586%25D9%2588%25D8%25B9%25DB%258C+%25D8%25A8%25D8%25A7+%25D8%25AA%25D8%25A7%25D9%2583%25DB%258C%25D8%25AF+%25D8%25A8%25D8%25B1+%25D9%2585%25D9%2586%25D8%25B7%25D9%2582&amp;cb=0e7a9b3656\' width=\'0\' height=\'0\' alt=\'\' style=\'width: 0px; height: 0px;\' /><"+"/div>\"); }\n";
+OA_output['5'] += "// ]]> --><"+"/script>\n";
